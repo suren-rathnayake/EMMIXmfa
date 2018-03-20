@@ -6,7 +6,7 @@ Date: 2018-3-19
 Author: Suren Rathnayake, Geoff McLachlan, Jungsun Baek
 Maintainer: Geoff McLachlan <g.mclachlan@uq.edu.au>
 Description: We provide functions to fit finite mixture of multivariate normal or t-distributions to data with various factor analytic structures adopted for the covariancence / scale matrices. Maximum likelihood estimators of model parameters are obtained via the Expectation-Maximization algorithm. 
-Suggests: EMMIX, mvtnorm, GGally, ggplot2
+Suggests: mvtnorm, GGally, ggplot2
 License: GPL (>= 2)
 NeedsCompilation: no
 Packaged: 2017-09-21 06:07:44 UTC; uqsratha
