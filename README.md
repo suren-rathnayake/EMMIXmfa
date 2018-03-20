@@ -21,7 +21,7 @@ mcfa_fit <- mcfa(Y = iris[, -5], g = 3, q = 2)
 
 The groupings can be visualized in the _q_-dimensional factor space.
 ```
-plot_factors(fit)
+plot_factors(mcfa_fit)
 ```
 Functions `mfa` and `mcfa` fits multivariate normals to the data, fitting _t_-distributions can be achieved
 using `mtfa` and `mctfa` function. Further, there are functions to generate data from a `emmix`
