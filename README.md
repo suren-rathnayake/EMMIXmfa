@@ -12,6 +12,17 @@ or from the family of multivariate _t_-distributions.
 Maximum likelihood estimators of model parameters are obtained using 
 the Expectation-Maximization algorithm.  
 
+## Installation
+
+Installingdirectly from suing the `devtools` package.
+
+```
+library(devtools)
+install_github("suren-rathnayake/EMMIXmfa")
+```
+
+## Usage Example
+
 Fitting a MFA model with there components using two factors for the Iris data available in
 R can be done using,  
 ```
