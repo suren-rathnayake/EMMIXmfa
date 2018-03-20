@@ -1,4 +1,6 @@
 
+# EMMIXmfa
+
 This package provides functions for cluster analysis using
 mixtures of factor analyzers (MFA) and mixture of common factor
 analyzers (MCFA) models. 
