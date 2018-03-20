@@ -1,0 +1,228 @@
+\name{mfa}
+\alias{mfa}
+\alias{mfa.default}
+\alias{print.mfa}
+\alias{summary.mfa}
+\alias{plot.mfa}
+\alias{mtfa}
+\alias{mtfa.default}
+\alias{print.mtfa}
+\alias{summary.mtfa}
+\alias{plot.mtfa}
+\title{
+Mixtures of Factor Analyzers.
+}
+\description{
+Functions for fitting Mixtures of Factor Analyzers (MFA) and
+Mixtures of \emph{t}-Factor Analyzers (M\emph{t}FA) to data.
+Maximum Likelihood estimates of the model parameters are obtained
+using the Alternating Expectation Conditional Maximization (AECM)
+algorithm.
+
+In the case of MFA, coponent distributions belong to the family of 
+multivariate Gaussian distributions, while with M\eqn{t}FA 
+the component distributions corresponds to multivariate
+\emph{t} distributions.
+
+}
+\usage{
+mfa(Y, g, q, ...)
+mtfa(Y, g, q, ...)
+\method{mfa}{default}(Y, g, q, itmax = 500, nkmeans = 20, nrandom = 20,
+  tol = 1.e-5, sigma_type = 'common', D_type = 'common', init_clust = NULL,
+  init_para = NULL, conv_measure = 'diff', warn_messages = TRUE, ...)
+\method{mtfa}{default}(Y, g, q, itmax = 500, nkmeans = 20, nrandom = 20,
+  tol = 1.e-5, df_init = rep(30, g), df_update = TRUE,
+  sigma_type = 'common', D_type = 'common', init_clust = NULL,
+  init_para = NULL, conv_measure = 'diff', warn_messages = TRUE, ...)
+}
+\arguments{
+ \item{Y}{
+  A matrix or a data frame of which rows correspond to
+  observations and columns to variables.
+}
+ \item{g}{
+  Number of components.
+}
+ \item{q}{
+  Number of factors.
+}
+ \item{itmax}{
+  Maximum number of EM iterations.
+}
+ \item{nkmeans}{
+  The number of times the k-means algorithm to be used in partition
+  the data into \code{g} groups. These groupings are then used in
+  initializing the parameters for the EM algorithm.
+}
+ \item{nrandom}{
+  The number of random \code{g}-group partitions for the data to be used
+  initializing the EM algorithm.
+}
+ \item{tol}{
+  The EM algorithm terminates if the measure of convergence falls below
+  this value.
+}
+ \item{sigma_type}{
+  This allows to specify whether the covariance matrices (for \code{mfa})
+  or the scale matrices (for \code{mtfa}) are constraint
+  to be the same (default, \code{sigma_type = "common"}) 
+  for each  component or not (\code{sigma_type = "unique"}).
+}
+ \item{D_type}{
+  To specify whether the diagonal error covariance matrix is common to all
+  the components or not. If \code{sigma_type = "unique"}, then
+  \code{D_type} could either be \code{"common"}
+  (the default) to each component, or \code{"unique"}.
+  If the \code{sigma_type = "common"}, then
+  \code{D_type} must also be \code{ "common"}.
+}
+ \item{init_clust}{
+  A vector or matrix consisting of partition of samples to be used
+  in the EM algorithm. For matrix of partitions, columns must corresponds
+  individual partitions of the data. Optional.
+}
+  \item{init_para}{
+  A list containing model parameters to be used as initial
+  parameter estimates for the EM algorithm. Optional.
+}
+ \item{conv_measure}{
+  The default \code{'diff'} stops the EM iterations if
+  |\eqn{l^{(k+1)}} - \eqn{l^{(k)}}| < \code{tol} where
+  \eqn{l^{(k)}} is the log-likelihood at the \eqn{k}th EM iteration.
+  If \code{'ratio'}, then the convergence of the EM steps is measured
+  using the |(\eqn{l^{(k+1)}} - \eqn{l^{(k)}})/\eqn{l^{(k+1)}}|.
+}
+ \item{df_init}{
+  Initial values of the degree of freedom parameters for \code{mtfa}.
+}
+ \item{df_update}{
+  If \code{df_update = TRUE} (default), then the degree of freedom parameters
+  values will be updated during the EM iterations.
+  Otherwise, if \code{df_update = FALSE}, they will be fixed at the initial
+  values specified in \code{df_init}.
+}
+ \item{warn_messages}{
+  If \code{warn_messages = TRUE} (default), the output would
+  include error messages for instances, if any, where the
+  model fitting function failed to provide estimates of parameters.
+  Otherwise the messages will not be stored.
+}
+\item{\dots}{
+  Not used.
+}
+}
+\details{
+Cluster a given data set using Mixtures of Factor Analyzers or
+approach or using Mixtures of \emph{t}-Factor Analyzers.
+}
+\value{
+Object of class \code{c("emmix", "mfa")} or \code{c("emmix",
+"mtfa")} containing the fitted model parameters is returned.
+Details of the components are as fellows:
+ \item{g}{
+  Number of mixture components.
+}
+ \item{q}{
+  Number of factors.
+}
+ \item{pivec}{
+ Mixing proportions of the components.
+}
+ \item{mu}{
+  Matrix containing estimates of component means for each mixture
+  component. Size \eqn{p \times g}.
+}
+ \item{B}{
+  Array containing component dependent loading matrices. Size
+  \eqn{p \times q \times g}.
+}
+  \item{D}{
+  Estimates of error covariance matrices. If \code{D_type} = "common"
+  was used then \code{D} is \eqn{p \times p} matrix common to
+  all components,  if \code{D_type} = "unique", then \code{D} is a
+  size \eqn{p \times p \times g} array.
+}
+  \item{v}{
+  Degrees of freedom for each component.
+}
+  \item{logL}{
+  Log-likelihood.
+}
+  \item{BIC}{
+  Bayesian Information Criterion.
+}
+  \item{tau}{
+  Matrix of posterior probabilities for the data
+  used based on the fitted values. Matrix of size \code{n by g}.
+}
+  \item{clust}{
+  Vector of integers 1 to g indicating cluster allocations
+  of the observations.
+}
+  \item{U}{
+    Estimated conditional expected component scores of the
+    unobservable factors given the data and the component membership.
+    Size is Size \eqn{n \times q \times g}.
+}
+  \item{Fmat}{
+   Means of the estimated conditional expected factors scores over
+   estimated posterior distributions. Size \eqn{n \times q}.
+}
+ \item{UC}{
+ Alternative estimate of \code{Fmat} where the posterior probabilities
+ for each sample are replaced by component indicator vectors
+ which contain one in the element corresponding to the highest posterior
+ probability while others zero.  Size \eqn{n \times q}.
+}
+  \item{ERRMSG}{
+  Error messages.
+}
+  \item{D_type}{
+  Whether common or unique error covariance is used, as specified in
+  model fitting.
+}
+  \item{df_update}{
+  Whether DOF (\code{v}) was fixed or estimated, as specified in
+  model fitting.
+}
+}
+\references{
+Ghahramani Z, and Hinton GE (1997). \emph{The EM algorithm for mixture 
+of factor analyzers}. 
+Technical Report, CRG-TR-96-1, University of Toronto, Toronto.
+
+McLachlan GJ, Peel D, and Bean RW (2003). Modelling high-dimensional data
+by mixtures of factor analyzers.
+\emph{Computational Statistics & Data Analysis} \strong{41}, 379--388.
+
+McLachlan GJ, Bean RW, Ben-Tovim Jones L (2007). Extension of the mixture
+of factor analyzers model to incorporate the multivariate \emph{t}
+distribution.
+\emph{Computational Statistics & Data Analysis}, \strong{51}, 5327--5338.
+
+McLachlan GJ, Baek J, and Rathnayake SI (2011). Mixtures of factor analyzers
+for the analysis of high-dimensional data.
+In \emph{Mixture Estimation and Applications},
+KL Mengersen, CP Robert, and DM Titterington (Eds).
+Hoboken, New Jersey: Wiley, pp. 171--191.
+}
+
+\author{
+Suren Rathnayake, Geoffrey McLachlan
+}
+%%\note{
+%%}
+%% ~Make other sections like Warning with \section{Warning }{....} ~
+
+\seealso{
+\code{\link{mcfa}}
+}
+\examples{
+  model <- mfa(iris[, -5], g=3, q=2, itmax=200, nkmeans=1, nrandom=5)
+  plot(model)
+  summary(model)
+}
+\keyword{ cluster}
+\keyword{ multivariate }
+\keyword{ models }% __ONLY ONE__ keyword per line
