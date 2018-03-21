@@ -198,7 +198,6 @@ p <- ncol(Y)
 n <- nrow(Y)
 
 context("mfa")
-model <- mfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5
              sigma_type = "unique", D_type = "unique")
 expect_that(model, is_a("mfa"))
 expect_that(model, is_a("emmix"))
