@@ -38,17 +38,17 @@ if (model$sigma_type == "unique") {
   expect_that(q,   equals(dim_sigma[2]))  
 }
 
-expect_that(n,   equals(nrow(model$tau)))
-expect_that(g,   equals(ncol(model$tau)))
-expect_that(n,   equals(nrow(model$Fmat)))
-expect_that(q,   equals(ncol(model$Fmat)))
-expect_that(n,   equals(nrow(model$UC)))
-expect_that(q,   equals(ncol(model$UC)))
+expect_that(n, equals(nrow(model$tau)))
+expect_that(g, equals(ncol(model$tau)))
+expect_that(n, equals(nrow(model$Fmat)))
+expect_that(q, equals(ncol(model$Fmat)))
+expect_that(n, equals(nrow(model$UC)))
+expect_that(q, equals(ncol(model$UC)))
 dim_U <- dim(model$U)
-expect_that(n,   equals(dim_U[1]))
-expect_that(q,   equals(dim_U[2]))
-expect_that(g,   equals(dim_U[3]))
-expect_that(n,   equals(length(model$clust)))
+expect_that(n, equals(dim_U[1]))
+expect_that(q, equals(dim_U[2]))
+expect_that(g, equals(dim_U[3]))
+expect_that(n, equals(length(model$clust)))
 
 model <- mfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
                           sigma_type = "unique", D_type = "unique")
@@ -198,7 +198,9 @@ p <- ncol(Y)
 n <- nrow(Y)
 
 context("mfa")
-             sigma_type = "unique", D_type = "unique")
+model <- mfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
+        sigma_type = "unique", D_type = "unique")
+
 expect_that(model, is_a("mfa"))
 expect_that(model, is_a("emmix"))
 expect_that(g,   equals(model$g))
@@ -317,7 +319,7 @@ test_that("mfa with itmax NULL", {
 test_that("mfa with itmax neg", {
   expect_that(mfa (Y, g, q, itmax=-1), throws_error())
 })
-a <- mfa (Y, g, q, init_para = model)
+a <- mfa (Y, g, q, init_para = model, sigma_type = model$sigma_type, D_type = model$D_type)
 test_that("mfa with init_para as past model", {
   expect_that(a, is_a("mfa"))
 })
