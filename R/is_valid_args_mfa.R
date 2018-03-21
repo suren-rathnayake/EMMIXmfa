@@ -103,7 +103,7 @@ if ((conv_measure != "diff") && (conv_measure != "ratio")) {
 
 if (class(warn_messages) != "logical") {
   
-  ERR <- "warn_messages must either be TRUE or FALSE'."
+  ERR <- "warn_messages must either be TRUE or FALSE."
   class(ERR) <- "error"
   return(ERR)
 }

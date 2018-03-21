@@ -148,6 +148,5 @@ if (!any(is.numeric(df_init))) {
   return(ERR)
 }
 
-ERR <- "TRUE"
 return(ERR)
 }

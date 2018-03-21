@@ -162,7 +162,7 @@ if (sigma_type=='common') {
 }
 Hmodel$BIC <- -2 * Hmodel$logL + d * log(n)
 Hmodel$clust <- apply(Hmodel$tau, 1, which.max)
-Hmodel <- append(Hmodel, do.call('factor_scores.mtfa',
+Hmodel <- append(Hmodel, do.call('factor_scores_mtfa',
                   c(list(Y = Y), Hmodel)))
 Hmodel$call <- match.call()
 if(warn_messages == TRUE)

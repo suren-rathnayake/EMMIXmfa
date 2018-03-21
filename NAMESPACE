@@ -26,6 +26,8 @@ S3method(predict, mcfa)
 S3method(predict, mctfa)
 S3method(factor_scores, mcfa)
 S3method(factor_scores, mctfa)
+S3method(factor_scores, mfa)
+S3method(factor_scores, mtfa)
 importFrom("graphics", "axis", "pairs", "plot")
 importFrom("stats", "cov", "kmeans", "mahalanobis", "rnorm", "runif",
              "uniroot")

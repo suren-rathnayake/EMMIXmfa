@@ -1,4 +1,4 @@
-factor_scores.mtfa <- function (Y, g, q, pivec, B, mu, D, sigma_type, D_type,
+factor_scores_mtfa <- function (Y, g, q, pivec, B, mu, D, sigma_type, D_type,
                                 v, tau = NULL, clust = NULL, ...) {
 
 if(!is.matrix(Y))
