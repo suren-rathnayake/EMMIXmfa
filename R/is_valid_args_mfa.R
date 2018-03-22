@@ -22,7 +22,7 @@ if (!any(is.numeric(Y))) {
 }
 
 p <- ncol(Y)
-if (is.null(p)) {
+if ((is.null(p)) || (p == 1)) {
   ERR <- "The data must have more than one variable."
   class(ERR) <- "error"
   return(ERR)

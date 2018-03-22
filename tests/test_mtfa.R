@@ -2,62 +2,63 @@ rm(list=ls())
 require(testthat)
 require(EMMIXmfa)
 
-library(mvtnorm)
-p1 <- 10
-p2 <- 100
-p = p1 + p2
-q = 2
-g = 5
-n <- 50
-pi1=0.15; pi2=0.2; pi3=0.15; pi4=0.2; pi5=0.3
-A1 <- rbind( c(0.5, 0),   c(-0.9, 0),    c(0.3, 0),
-             c(0.6, 0.8), c(0.2, -0.7), c(-0.7, 0.5),
-             c(0, 0.6), c(0, -0.4), c(0, 0.3), c(0, -0.5))
-A2 <- matrix(rep(0, p2*q), c(p2, q))
-xi1 <- c( 0,   2.5)
-xi2 <- c(-2.5, 0)
-xi3 <- c( 2.5, 0)
-xi4 <- c( 0,  -2.5)
-xi5 <- c( 0,   0)
-Om1 <- rbind( c(0.1, 0), c(0, 0.45))
-Om2 <- rbind( c(0.45,0), c(0, 0.1))
-Om3 <- rbind( c(0.45,0), c(0, 0.1))
-Om4 <- rbind( c(0.1, 0), c(0, 0.45))
-Om5 <- rbind( c(1, 0.9), c(0.9, 1)) 	
-A <- rbind(A1, A2)
-D <- diag(c(runif(p1, 0.1, 0.3), runif(p2, 0.3, 0.8)))
-pivec <- c(pi1, pi2, pi3, pi4, pi5)
+# library(mvtnorm)
+# p1 <- 10
+# p2 <- 100
+# p = p1 + p2
+# q = 2
+# g = 5
+# n <- 50
+# pi1=0.15; pi2=0.2; pi3=0.15; pi4=0.2; pi5=0.3
+# A1 <- rbind( c(0.5, 0),   c(-0.9, 0),    c(0.3, 0),
+#              c(0.6, 0.8), c(0.2, -0.7), c(-0.7, 0.5),
+#              c(0, 0.6), c(0, -0.4), c(0, 0.3), c(0, -0.5))
+# A2 <- matrix(rep(0, p2*q), c(p2, q))
+# xi1 <- c( 0,   2.5)
+# xi2 <- c(-2.5, 0)
+# xi3 <- c( 2.5, 0)
+# xi4 <- c( 0,  -2.5)
+# xi5 <- c( 0,   0)
+# Om1 <- rbind( c(0.1, 0), c(0, 0.45))
+# Om2 <- rbind( c(0.45,0), c(0, 0.1))
+# Om3 <- rbind( c(0.45,0), c(0, 0.1))
+# Om4 <- rbind( c(0.1, 0), c(0, 0.45))
+# Om5 <- rbind( c(1, 0.9), c(0.9, 1)) 	
+# A <- rbind(A1, A2)
+# D <- diag(c(runif(p1, 0.1, 0.3), runif(p2, 0.3, 0.8)))
+# pivec <- c(pi1, pi2, pi3, pi4, pi5)
+# 
+# mu    <- array(NA, c(p, g))
+# mu <- cbind(A%*%xi1, A%*%xi2, A%*%xi3, A%*%xi4, A%*%xi5)
+# 
+# sigma <- array(NA, c(p, p, g))
+# sigma[,,1] <- A %*% Om1 %*% t(A) + D
+# sigma[,,2] <- A %*% Om2 %*% t(A) + D
+# sigma[,,3] <- A %*% Om3 %*% t(A) + D
+# sigma[,,4] <- A %*% Om4 %*% t(A) + D
+# sigma[,,5] <- A %*% Om5 %*% t(A) + D
+# 
+# Y <- array(NA, c(n, p))
+# cls <- array(NA, c(n, 1))
+# 
+# for( i in 1 : n) 
+# {
+#   Pi <- 0
+#   r <- runif(1)
+#   for( j in 1:g)
+#   {
+#     Pi <- Pi + pivec[j]
+#     if( r < Pi )
+#     {
+#       comp <- j
+#       cls[i] <- j
+#       break
+#     }
+#   }
+#   Y[i,] <-  rmvnorm(1, mu[,comp], sigma[,,comp])
+# }
 
-mu    <- array(NA, c(p, g))
-mu <- cbind(A%*%xi1, A%*%xi2, A%*%xi3, A%*%xi4, A%*%xi5)
-
-sigma <- array(NA, c(p, p, g))
-sigma[,,1] <- A %*% Om1 %*% t(A) + D
-sigma[,,2] <- A %*% Om2 %*% t(A) + D
-sigma[,,3] <- A %*% Om3 %*% t(A) + D
-sigma[,,4] <- A %*% Om4 %*% t(A) + D
-sigma[,,5] <- A %*% Om5 %*% t(A) + D
-
-Y <- array(NA, c(n, p))
-cls <- array(NA, c(n, 1))
-
-for( i in 1 : n) 
-{
-  Pi <- 0
-  r <- runif(1)
-  for( j in 1:g)
-  {
-    Pi <- Pi + pivec[j]
-    if( r < Pi )
-    {
-      comp <- j
-      cls[i] <- j
-      break
-    }
-  }
-  Y[i,] <-  rmvnorm(1, mu[,comp], sigma[,,comp])
-}
-
+Y <- iris[, -5]
 g <- 3
 q <- 2
 p <- ncol(Y)
@@ -119,7 +120,7 @@ test_that("mtfa with init_para as past model", {
 expect_that(mtfa(Y, g, q, itmax = 0),
             throws_error("Maximum number of iterations, itmax, must be greather than one."))
 
-expect_that(mtfa(Y, g, q),
+expect_that(mtfa(Y[,1], g, q),
             throws_error("The data must have more than one variable."))
 
 
@@ -140,13 +141,13 @@ expect_that(mtfa(Y, g = 2.5, q = q),
 expect_that(mtfa(Y, g = g, q = 1.5),
             throws_error("q must be a positive integer."))
 
-expect_that(mtfa(Y, g = g, q = q, sigma_type == 'common', D_type == 'unique'),
+expect_that(mtfa(Y, g = g, q = q, sigma_type = 'common', D_type == 'unique'),
             throws_error("D_type = 'unique' not available with sigma_type = 'common'."))
 
-expect_that(mtfa(Y, g = g, q = q, sigma_type == 'd', D_type == 'unique'),
+expect_that(mtfa(Y, g = g, q = q, sigma_type = 'd', D_type == 'unique'),
             throws_error("sigma_type needs to be either 'unique' or 'common'"))
 
-expect_that(mtfa(Y, g = g, q = q, sigma_type == 'common', D_type == 'a'),
+expect_that(mtfa(Y, g = g, q = q, sigma_type = 'common', D_type == 'a'),
             throws_error("D_type needs to be either 'unique' or 'common'."))
 
 expect_that(mtfa(Y, g = g, q = q, conv_measure = "adiff"),
