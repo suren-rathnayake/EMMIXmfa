@@ -169,7 +169,7 @@ expect_that(mtfa(Y, g = g, q = q, df_update = TRUE, df_init = letters[1:g]),
 
 
 
-model <- mtfa(Y, g, q, nkmeans = 20, nrandom = 20, tol = 1.e-5,
+model <- mtfa(iris[, -5], g, q, nkmeans = 20, nrandom = 20, tol = 1.e-5,
              sigma_type = "unique", D_type = "unique", df_update = FALSE)
 expect_that(model, is_a("mtfa"))
 expect_that(model, is_a("emmix"))
@@ -210,7 +210,7 @@ expect_that(q,   equals(dim_U[2]))
 expect_that(g,   equals(dim_U[3]))
 expect_that(n,   equals(length(model$clust)))
 
-model <- mtfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
+model <- mtfa(iris[, -5], g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
              sigma_type = "common", D_type = "common")
 expect_that(model, is_a("mtfa"))
 expect_that(model, is_a("emmix"))
@@ -243,7 +243,7 @@ if (model$sigma_type == "unique") {
 
 
 context("mtfa")
-model <- mtfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5, 
+model <- mtfa(iris[, -5], g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5, 
              sigma_type = "unique", D_type = "common")
 expect_that(model, is_a("mtfa"))
 expect_that(model, is_a("emmix"))
@@ -284,7 +284,7 @@ expect_that(q, equals(dim_U[2]))
 expect_that(g, equals(dim_U[3]))
 expect_that(n, equals(length(model$clust)))
 
-model <- mtfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
+model <- mtfa(iris[, -5], g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
              sigma_type = "unique", D_type = "unique")
 expect_that(model, is_a("mtfa"))
 expect_that(model, is_a("emmix"))
@@ -325,7 +325,7 @@ expect_that(q,   equals(dim_U[2]))
 expect_that(g,   equals(dim_U[3]))
 expect_that(n,   equals(length(model$clust)))
 
-model <- mtfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
+model <- mtfa(iris[, -5], g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
              sigma_type = "common", D_type = "common")
 expect_that(model, is_a("mtfa"))
 expect_that(model, is_a("emmix"))
