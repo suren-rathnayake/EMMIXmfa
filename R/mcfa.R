@@ -37,7 +37,7 @@ if (!is.null(init_para)) {
   setTxtProgressBar(pb, prog)
 
   if (!check_para(p, q, g, init_para, "mcfa"))
-    stop("Specified init_para is not acceptable", .call = FALSE)
+    stop("Specified init_para is not acceptable", call. = FALSE)
 
   init_para <- init_para[c("g", "q", "pivec", "A", "xi",
                                           "omega", "D")]

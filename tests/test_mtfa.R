@@ -141,13 +141,13 @@ expect_that(mtfa(Y, g = 2.5, q = q),
 expect_that(mtfa(Y, g = g, q = 1.5),
             throws_error("q must be a positive integer."))
 
-expect_that(mtfa(Y, g = g, q = q, sigma_type = 'common', D_type == 'unique'),
+expect_that(mtfa(Y, g = g, q = q, sigma_type = 'common', D_type = 'unique'),
             throws_error("D_type = 'unique' not available with sigma_type = 'common'."))
 
-expect_that(mtfa(Y, g = g, q = q, sigma_type = 'd', D_type == 'unique'),
+expect_that(mtfa(Y, g = g, q = q, sigma_type = 'd', D_type = 'unique'),
             throws_error("sigma_type needs to be either 'unique' or 'common'"))
 
-expect_that(mtfa(Y, g = g, q = q, sigma_type = 'common', D_type == 'a'),
+expect_that(mtfa(Y, g = g, q = q, sigma_type = 'common', D_type = 'a'),
             throws_error("D_type needs to be either 'unique' or 'common'."))
 
 expect_that(mtfa(Y, g = g, q = q, conv_measure = "adiff"),
@@ -156,11 +156,10 @@ expect_that(mtfa(Y, g = g, q = q, conv_measure = "adiff"),
 expect_that(mtfa(Y, g = g, q = q, warn_messages = 1),
             throws_error("warn_messages must either be TRUE or FALSE."))
 
-expect_that(mtfa(Y, g = g, q = q, init_para = model, sigma_type = "c"),
-            throws_error("`init_para$sigma_type` is not same as `sigma_type`."))
+expect_that(mtfa(Y, g = g, q = q, init_para = model, sigma_type = "u"),
+            throws_error())
 
-expect_that(mtfa(Y, g = g, q = q, init_para = model, D_type = "u"),
-            throws_error("`init_para$D_type` is not same as `D_type`."))
+
 
 expect_that(mtfa(Y, g = g, q = q, df_update = "u"),
             throws_error("df_update is either TRUE or FALSE'."))
@@ -210,6 +209,10 @@ expect_that(n,   equals(dim_U[1]))
 expect_that(q,   equals(dim_U[2]))
 expect_that(g,   equals(dim_U[3]))
 expect_that(n,   equals(length(model$clust)))
+
+expect_that(mtfa(Y, g = g, q = q, init_para = model, sigma_type = "unique", D_type = "c"),
+            throws_error())
+
 
 model <- mtfa(iris[, -5], g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
              sigma_type = "common", D_type = "common")

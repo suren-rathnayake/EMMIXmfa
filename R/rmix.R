@@ -138,19 +138,20 @@ sigma <- array(NA, c(p, p, ncomp))
 dat <- matrix(NA, nrow = n, ncol = p)
 
 if (any(class(model) == "mcfa")) {
-  rmcfa(n, model, ...)
+  dat <- rmcfa(n, model, ...)
 } 
 
 if (any(class(model) == "mctfa")) {
-  rmctfa(n, model, ...)
+  dat <- rmctfa(n, model, ...)
 } 
 
 if (any(class(model) == "mfa")) {
-  rmfa(n, model, ...)
+  dat <- rmfa(n, model, ...)
 } 
 
 if (any(class(model) == "mtfa")) {
-  rmtfa(n, model, ...)
+  dat <- rmtfa(n, model, ...)
 } 
 
+dat 
 }

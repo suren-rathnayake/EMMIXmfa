@@ -111,7 +111,7 @@ expect_that(mfa(X, g, q),
             throws_error("`Y' has a non-numeric element"))
 X <- X[,1]
 expect_that(mfa(X, g, q=1),
-            throws_error("The number of factors must be less than the number of variables."))
+            throws_error("The data must have more than one variable."))
 X <- Y
 expect_that(mfa(X, g, ncol(X)),
             throws_error("The number of factors must be less than the number of variables."))
@@ -296,7 +296,7 @@ expect_that(mfa(X, g, q),
             throws_error("`Y' has a non-numeric element"))
 X <- Y[,1]
 expect_that(mfa(X, g, q=p),
-            throws_error("The number of factors must be less than the number of variables."))
+            throws_error("The data must have more than one variable."))
 X <- Y
 expect_that(mfa(X, g, ncol(X)),
             throws_error("The number of factors must be less than the number of variables."))

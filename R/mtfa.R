@@ -48,7 +48,7 @@ if (!is.null(init_para)) {
   setTxtProgressBar(pb, prog)
 
   if (!check_para(p, q, g, init_para, "mtfa"))
-    stop("Incorrect specification of init_para", .call = FALSE)
+    stop("Incorrect specification of init_para", call. = FALSE)
 
   v <- init_para$v
   init_para <- init_para[c("g", "q", "pivec", "mu", "B", "D",

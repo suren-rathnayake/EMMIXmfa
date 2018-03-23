@@ -1,6 +1,6 @@
 rm(list=ls())
 require(testthat)
-require(EMMIXmcfa)
+require(EMMIXmfa)
 
 set.seed(1)
 Y <- iris[, -5]

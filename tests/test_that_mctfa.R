@@ -1,6 +1,6 @@
 rm(list=ls())
 require(testthat)
-require(EMMIXmcfa)
+require(EMMIXmfa)
 
 set.seed(1)
 Y <- iris[, -5]
@@ -201,10 +201,10 @@ test_that("mctfa with itmax neg", {
 })
 
 test_that("mctfa with init_para as past model", {
-  expect_that(mctfa (Y, g, q, init_para = model), is_a("mctfa"))
+  expect_that(mctfa (Y, g = model$g, q = model$q, init_para = model), is_a("mctfa"))
 })
 
-dat <- rmctfa(100, model)
+dat <- rmix(100, model)
 
 test_that("mctfa with init_para as past model", {
   expect_that(dat, is_a("matrix"))

@@ -55,7 +55,7 @@ if (!is.null(init_para)) {
     class(init_para) <- "mfa"
 
   if (!check_para(p, q, g, init_para, "mfa"))
-    stop("incorrect specification of init_para", .call = FALSE)
+    stop("incorrect specification of init_para", call. = FALSE)
 
   init_para <- init_para[c("g", "q", "pivec", "mu", "B", "D",
                            "sigma_type", "D_type")]
