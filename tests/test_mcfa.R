@@ -62,7 +62,8 @@ g <- 3
 q <- 2
 p <- ncol(Y)
 n <- nrow(Y)
-context("mcfa")
+
+# context("mcfa")
 model <- mcfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5)
 expect_that(model, is_a("mcfa"))
 expect_that(model, is_a("emmix"))
@@ -156,7 +157,7 @@ expect_that(p,   equals(ncol(model$D)))
 
 
 
-context("mctfa")
+#context("mctfa")
 q <- 1
 model <- mctfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5)
 expect_that(model, is_a("mctfa"))
@@ -235,24 +236,24 @@ model <- mctfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
 
 expect_that(model, is_a("mctfa"))
 expect_that(model, is_a("emmix"))
-expect_that(g,   equals(model$g))
-expect_that(q,   equals(model$q))
-expect_that(g,  equals(length(model$pivec)))
-expect_that(1,   equals(sum(model$pivec)))
+expect_that(g, equals(model$g))
+expect_that(q, equals(model$q))
+expect_that(g, equals(length(model$pivec)))
+expect_that(1, equals(sum(model$pivec)))
 
-expect_that(p,   equals(nrow(model$A)))
-expect_that(q,   equals(ncol(model$A)))
+expect_that(p, equals(nrow(model$A)))
+expect_that(q, equals(ncol(model$A)))
 
-expect_that(q,   equals(nrow(model$xi)))
-expect_that(g,   equals(ncol(model$xi)))
+expect_that(q, equals(nrow(model$xi)))
+expect_that(g, equals(ncol(model$xi)))
 
 dim_omega <- dim(model$omega)
-expect_that(q,   equals(dim_omega[1]))
-expect_that(q,   equals(dim_omega[2]))
-expect_that(g,   equals(dim_omega[3]))
+expect_that(q, equals(dim_omega[1]))
+expect_that(q, equals(dim_omega[2]))
+expect_that(g, equals(dim_omega[3]))
 
-expect_that(p,   equals(nrow(model$D)))
-expect_that(p,   equals(ncol(model$D)))
+expect_that(p, equals(nrow(model$D)))
+expect_that(p, equals(ncol(model$D)))
 
 
 fac <- factor_scores(model, Y)
