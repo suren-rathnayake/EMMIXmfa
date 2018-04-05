@@ -1,27 +1,27 @@
-plot_factors <- function(scores, type = "Fmat",
+plot_factors <- function(scores, type = "Umean",
             clust = if (exists('clust', where=scores)) scores$clust else NULL,
             limx = NULL, limy = NULL) {
 
 p_gg <- requireNamespace("GGally", quietly = TRUE) &&
   requireNamespace("ggplot2", quietly = TRUE)
   
-if (type == "Fmat")
-  mat <- scores$Fmat
+if (type == "Umean")
+  mat <- scores$Umean
 
-if (type == "UC")
-  mat <- scores$UC
+if (type == "Uassign")
+  mat <- scores$Uassign
 
-if (type == "U")
-  mat <- scores$U
+if (type == "Uscores")
+  mat <- scores$Uscores
     
 if (is.null(clust)) {
   
-  if (type == "U") {
+  if (type == "Uscores") {
     
     q <- dim(mat)[2]
     g <- dim(mat)[3]
       for (i in 1 : g) {
-        mat <- as.matrix(scores$U[,, i])
+        mat <- as.matrix(scores$Uscores[,, i])
         colnames(mat) <- paste0("u_", 1 : q)
         
         if (q == 1) {
@@ -49,24 +49,24 @@ if (is.null(clust)) {
         readline(prompt = "Press [enter] to continue")
       }
     
-  } else if((type == "Fmat") || (type == "UC")) {
-        stop('For type= "Fmat" or "UC", clust needs to be specified')
+  } else if((type == "Umean") || (type == "Uassign")) {
+        stop('For type= "Umean" or "Uassign", clust needs to be specified')
   }
       
 } else {
   q <- dim(mat)[2]
   g <- length(unique(clust))
-  if ((type == "Fmat") || (type == "UC"))
+  if ((type == "Umean") || (type == "Uassign"))
     it  <- 1
       
-  if (type == "U") {
+  if (type == "Uscores") {
     it <- g <- dim(mat)[3]
   }
       
   for (i in 1:it) {
         
-    if (type == "U")
-      mat <- as.matrix(scores$U[,, i])
+    if (type == "Uscores")
+      mat <- as.matrix(scores$Uscores[,, i])
         
     if (q == 1) {
       plot(mat, 1 : length(mat),  xlim = range(c(limx, mat)), axes = FALSE,
@@ -101,4 +101,3 @@ if (is.null(clust)) {
 }
 }
 
-plotscores <- plot_factors

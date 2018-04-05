@@ -91,18 +91,18 @@ Factor scores can be used in visualization of the data
 in the factor space.
 }
 \value{
-  \item{U}{
+  \item{Uscores}{
     Estimated conditional expected component scores of the 
     unobservable factors given the data and the component membership.
     Size is \eqn{n \times q \times g}, where \code{n} is the number of sample,
     \code{q} is the number of factors and \code{g} is the number components.
 }
-  \item{Fmat}{
+  \item{Umean}{
    Means of the estimated conditional expected factors scores over
    estimated posterior distributions. Size \eqn{n \times q}.
 }
- \item{UC}{
- Alternative estimate of \code{Fmat} where the posterior probabilities
+ \item{Uassign}{
+ Alternative estimate of \code{Umean} where the posterior probabilities
  for each sample are replaced by component indicator vectors 
  which contain one in the element corresponding to the highest posterior 
  probability while others zero.  Size \eqn{n \times q}.
@@ -143,7 +143,7 @@ clust <- predict(model, Y)
 
 fa_scores <- factor_scores(model, Y)
 # Visualizing new data in factor space
-plot_factors(fa_scores, type="Fmat", clust=clust)
+plot_factors(fa_scores, type="Umean", clust=clust)
 }
 \keyword{ cluster}
 \keyword{ multivariate}

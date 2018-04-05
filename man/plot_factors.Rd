@@ -9,14 +9,14 @@
  score matrix of fitted model.
 }
 \usage{
-plot_factors(scores, type = "Fmat",
+plot_factors(scores, type = "Umean",
     clust=if (exists('clust', where = scores)) scores$clust else NULL,
     limx = NULL, limy = NULL)
 }
 \arguments{
   \item{scores}{
   A list containing factor scores specified by
-  \code{Fmat}, \code{UC} or \code{U}, or a
+  \code{Umean}, \code{Uassign} or \code{Uscores}, or a
   model of class \code{mcfa, mctfa, mfa}, or \code{mtfa}.
 }
   \item{type}{
@@ -38,15 +38,15 @@ plot_factors(scores, type = "Fmat",
 }
 }
 \details{
-The \code{type} should either be \code{"U"}, \code{"UC"} or
-the default \code{"Fmat"}.
-If \code{type = "U"}, then the estimated conditional expected component
+The \code{type} should either be \code{"Uscores"}, \code{"Uassign"} or
+the default \code{"Umean"}.
+If \code{type = "Uscores"}, then the estimated conditional expected component
 scores of the unobservable factors given the data and the component membership
 are plotted.
-If \code{type = "Fmat"}, then the means of the estimated conditional
+If \code{type = "Umean"}, then the means of the estimated conditional
 expected factors scores over estimated posterior distributions
 are plotted.
-If \code{type = "UC"}, then an alternative estimate of \code{"Fmat"},
+If \code{type = "Uassign"}, then an alternative estimate of \code{"Umean"},
 where the posterior probabilities are replaced by component
 indicator vector, is plotted.
 }
@@ -75,14 +75,14 @@ indSample <- sample(1 : inds, 75)
 model <- mcfa (iris[indSample, -5], g = 3, q = 2, nkmeans = 1, nrandom = 0)
 err (model$clust, iris[indSample, 5])
 
-#same as plot_factors(model, tyep = "Fmat", clust = model$clust)
+#same as plot_factors(model, tyep = "Umean", clust = model$clust)
 plot (model)
 
 #can provide alternative groupings of samples via plot_factors
 plot_factors (model, clust = iris[indSample, 5])
 
-#same as plot_factors(model, tyep = "UC")
-plot (model, type = "UC")
+#same as plot_factors(model, tyep = "Uassign")
+plot (model, type = "Uassign")
 
 Y <- iris[-c(indSample), -5]
 Y <- as.matrix(Y)
@@ -90,8 +90,8 @@ clust <- predict(model, Y)
 err(clust, iris[-c(indSample), 5])
 
 fac_scores <- factor_scores(model, Y)
-plot_factors (fac_scores, type="Fmat", clust = clust)
-plot_factors (fac_scores, type="Fmat", clust = iris[-c(indSample), 5])
+plot_factors (fac_scores, type="Umean", clust = clust)
+plot_factors (fac_scores, type="Umean", clust = iris[-c(indSample), 5])
 
 }
 \keyword{ cluster}

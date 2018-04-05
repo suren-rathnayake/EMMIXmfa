@@ -42,11 +42,11 @@ if (is.null(clust))
   clust <- apply(tau, 1, which.max)
 
 UC <- array(0, c(n, q))
-Fmat <- array(0, c(n, q))
+Umean <- array(0, c(n, q))
 for (j in 1 : n) {
   UC[j, ] <- U[j,, clust[j]]
-  Fmat[j, ] <- tau[j,] %*% t(matrix(U[j,,], c(q, g)))
+  Umean[j, ] <- tau[j,] %*% t(matrix(U[j,,], c(q, g)))
 }
 
-return(list(U = U, UC = UC, Fmat = Fmat))
+return(list(Uscores = U, Uassign = UC, Umean = Umean))
 }

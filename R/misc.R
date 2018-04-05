@@ -82,7 +82,7 @@ plot.emmix <- function(x, ...) {
 
   if (x$q == 1) {
 
-    plot(x$Fmat, 1 : length(x$Fmat),  xlim = range(x$Fmat), axes = FALSE,
+    plot(x$Umean, 1 : length(x$Umean),  xlim = range(x$Umean), axes = FALSE,
           xlab = expression(widehat(u)[1]), ylab = "", type = "p",
           pch = if (x$g <= 5) {20 + as.numeric(x$clust)} else {
           as.numeric(x$clust)}, col = as.numeric(x$clust),
@@ -92,16 +92,16 @@ plot.emmix <- function(x, ...) {
 
   if (x$q == 2)
 
-    plot(x$Fmat[, c(1, 2)], col = as.numeric(x$clust),
-          ylim = range(x$Fmat[, 2]), pch = if (x$g <= 5) {
+    plot(x$Umean[, c(1, 2)], col = as.numeric(x$clust),
+          ylim = range(x$Umean[, 2]), pch = if (x$g <= 5) {
           20 + as.numeric(x$clust)} else{as.numeric(x$clust)},
-          bg = as.numeric(x$clust), xlim = range(x$Fmat[, 1]),
+          bg = as.numeric(x$clust), xlim = range(x$Umean[, 1]),
           xlab = expression(widehat(u)[1]),
           ylab=expression(widehat(u)[2]))
 
   if (x$q > 2)
 
-    pairs(x$Fmat, col = as.numeric(x$clust), bg = as.numeric(x$clust),
+    pairs(x$Umean, col = as.numeric(x$clust), bg = as.numeric(x$clust),
             pch = if(x$g <= 5) {
               20 + as.numeric(x$clust)} else{as.numeric(x$clust)})
 }
@@ -239,7 +239,7 @@ plot.emmix <- function(x, ...) {
 
   if (x$q == 1) {
 
-    plot(x$Fmat, 1 : length(x$Fmat),  xlim = range(x$Fmat), axes = FALSE,
+    plot(x$Umean, 1 : length(x$Umean),  xlim = range(x$Umean), axes = FALSE,
           xlab = expression(widehat(u)[1]), ylab = "", type = "p",
           pch = if (x$g <= 5) {20 + as.numeric(x$clust)} else {
           as.numeric(x$clust)}, col = as.numeric(x$clust),
@@ -249,16 +249,16 @@ plot.emmix <- function(x, ...) {
 
   if (x$q == 2)
 
-    plot(x$Fmat[, c(1, 2)], col = as.numeric(x$clust),
-          ylim = range(x$Fmat[, 2]), pch = if (x$g <= 5) {
+    plot(x$Umean[, c(1, 2)], col = as.numeric(x$clust),
+          ylim = range(x$Umean[, 2]), pch = if (x$g <= 5) {
           20 + as.numeric(x$clust)} else{as.numeric(x$clust)},
-          bg = as.numeric(x$clust), xlim = range(x$Fmat[, 1]),
+          bg = as.numeric(x$clust), xlim = range(x$Umean[, 1]),
           xlab = expression(widehat(u)[1]),
           ylab=expression(widehat(u)[2]))
 
   if (x$q > 2)
 
-    pairs(x$Fmat, col = as.numeric(x$clust), bg = as.numeric(x$clust),
+    pairs(x$Umean, col = as.numeric(x$clust), bg = as.numeric(x$clust),
             pch = if(x$g <= 5) {
               20 + as.numeric(x$clust)} else{as.numeric(x$clust)})
 }

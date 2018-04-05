@@ -1,5 +1,4 @@
 useDynLib(EMMIXmfa, cgmf)
-export(plotscores)
 exportMethods(summary)
 export(err)
 export(ari)
