@@ -26,7 +26,10 @@ install_github("suren-rathnayake/EMMIXmfa")
 Fitting a MFA model with there components using two factors for the Iris data available in
 R can be done using,  
 ```
+# Fit a Gaussian mixture model using MFA
 mfa_fit <- mfa(Y = iris[, -5], g = 3, q = 2, sigma_type = "common", D_type = "common")
+
+# Fit a Gaussian mixture model using MCFA
 mcfa_fit <- mcfa(Y = iris[, -5], g = 3, q = 2)
 ```
 
