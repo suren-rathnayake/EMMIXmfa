@@ -62,7 +62,7 @@ n <- nrow(Y)
 
 context("mtfa uc")
 
-model <- mtfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5, 
+model <- mtfa(Y, g, q, nkmeans = 4, nrandom = 4, tol = 1.e-5, 
              sigma_type = "unique", D_type = "common")
 
 expect_that(model, is_a("mtfa"))
@@ -103,7 +103,7 @@ expect_that(g, equals(dim_U[3]))
 expect_that(n, equals(length(model$clust)))
 
 context("mtfa uu")
-model <- mtfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
+model <- mtfa(Y, g, q, nkmeans = 4, nrandom = 4, tol = 1.e-5,
              sigma_type = "unique", D_type = "unique")
 
 expect_that(model, is_a("mtfa"))
