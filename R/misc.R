@@ -78,34 +78,6 @@ ari <- function (cls, hat_cls) {
 
 as.num.fac <- function(x) {as.numeric(as.factor(x))}
 
-plot.emmix <- function(x, ...) {
-
-  if (x$q == 1) {
-
-    plot(x$Umean, 1 : length(x$Umean),  xlim = range(x$Umean), axes = FALSE,
-          xlab = expression(widehat(u)[1]), ylab = "", type = "p",
-          pch = if (x$g <= 5) {20 + as.numeric(x$clust)} else {
-          as.numeric(x$clust)}, col = as.numeric(x$clust),
-          bg =  as.numeric(x$clust))
-    axis(side = 1)
-  }
-
-  if (x$q == 2)
-
-    plot(x$Umean[, c(1, 2)], col = as.numeric(x$clust),
-          ylim = range(x$Umean[, 2]), pch = if (x$g <= 5) {
-          20 + as.numeric(x$clust)} else{as.numeric(x$clust)},
-          bg = as.numeric(x$clust), xlim = range(x$Umean[, 1]),
-          xlab = expression(widehat(u)[1]),
-          ylab=expression(widehat(u)[2]))
-
-  if (x$q > 2)
-
-    pairs(x$Umean, col = as.numeric(x$clust), bg = as.numeric(x$clust),
-            pch = if(x$g <= 5) {
-              20 + as.numeric(x$clust)} else{as.numeric(x$clust)})
-}
-
 predict.emmix <- function(object, Y, ...) {
 
   if (any(class(object) == "mcfa")) {
@@ -130,19 +102,6 @@ predict.emmix <- function(object, Y, ...) {
   }
 }
 
-
-summary.emmix <- function(object, ...) {
-  cat("Call:\n")
-  print(object$call)
-  summ <- cbind(num_comp = object$g,
-                num_fac = object$q,
-                log_like = object$logL,
-                BIC = object$BIC)
-  cat("\n")
-  print(summ)
-}
-
-
 print.emmix <- function(x, ...) {
   cat("Call:\n")
   print(x$call)
@@ -150,7 +109,7 @@ print.emmix <- function(x, ...) {
   cat("\nCoefficients: \n")
   cat("pi_i : ", round(x$pivec, 3), "\n")
 
-  if((any(class(x) == "mfa") || any(class(x) == "mtfa"))) {
+  if ((any(class(x) == "mfa") || any(class(x) == "mtfa"))) {
     for(j in 1 : x$g) {
       cat("mu_", j, ":\n")
       print(x$mu[, j])
@@ -233,8 +192,6 @@ factor_scores <- function(Y, model, tau = NULL, clust= NULL, ...) {
 return(scores)
 }
 
-getscores <- factor_scores
-
 plot.emmix <- function(x, ...) {
 
   if (x$q == 1) {
@@ -263,6 +220,7 @@ plot.emmix <- function(x, ...) {
               20 + as.numeric(x$clust)} else{as.numeric(x$clust)})
 }
 
+
 predict.mcfa <- function(object, Y, ...) {
   
   tau <- do.call("tau.mcfa", c(list(Y = Y), object))
@@ -276,6 +234,21 @@ predict.mctfa <- function(object, Y, ...) {
   clust <- apply(tau, 1, which.max) 
   clust
 }
+
+predict.mfa <- function(object, Y, ...) {
+
+  tau <- do.call("tau.mfa", c(list(Y = Y), object))
+  clust <- apply(tau, 1, which.max)
+  clust
+}
+
+predict.mtfa <- function(object, Y, ...) {
+
+  tau <- do.call("tau.mtfa", c(list(Y = Y), object))
+  clust <- apply(tau, 1, which.max)
+  clust
+}
+
 
 summary.emmix <- function(object, ...) {
   

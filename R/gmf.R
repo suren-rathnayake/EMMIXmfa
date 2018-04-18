@@ -69,5 +69,3 @@ B <- matrix(ab[[3]], c(n, q))
 
 return(list(A = A, B = B))
 }
- 
- 

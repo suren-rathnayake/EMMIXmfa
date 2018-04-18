@@ -39,7 +39,7 @@ sigma[,, 5] <- A %*% Om5 %*% t(A) + D
 Y <- array(NA, c(n, p))
 cls <- array(NA, c(n, 1))
 
-for( i in 1 : n)  {
+for ( i in 1 : n)  {
   Pi <- 0
   r <- runif(1) 
   for( j in 1 : g) {
