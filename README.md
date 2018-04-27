@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/suren-rathnayake/EMMIXmfa.svg?branch=master)](https://travis-ci.org/suren-rathnayake/EMMIXmfa)
 
 # EMMIXmfa
 
