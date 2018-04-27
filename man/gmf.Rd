@@ -44,7 +44,9 @@ The matrices \eqn{A} and \eqn{B} are chosen to minimize objective
 function \eqn{f(X, A, B)} with under specific constraints
 to the matrix factorization method. 
 
-
+It is imperative that columns of the data matrix be on the same scale.
+Otherwise, it may not be possible to obtain a factorization
+of the data using this approach.
 }
 \value{
 A list containing,
