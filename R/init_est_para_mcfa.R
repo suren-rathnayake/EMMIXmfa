@@ -86,7 +86,7 @@ if (init_method == "eigen-A") {
 
 if (init_method == "gmf") {
 
-  AB <- gmf(Y, q, maxit = 1000, lambda = 0.01, cor_rate = 0.9, scaling = TRUE)
+  AB <- gmf(Y, q, maxit = 1000, lambda = 0.01, cor_rate = 0.9)
 
   svd_of_A <- svd(AB$A)
   A <- svd_of_A$u
