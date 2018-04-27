@@ -41,10 +41,17 @@ plot_factors(mcfa_fit)
 ```
 ![Plot of the factor scores](https://raw.githubusercontent.com/suren-rathnayake/misc/master/iris_mcfa_q2.png)
 
-Adjust Rand Index
+In the case where labeling of the data is available, EMMIXmfa has functionality calculate Adjust Rand Index
 ```
 ari(mcfa_fit$clust, iris[, 5])
+# 0.9602777
 ```
+and the number of misallocations
+```
+err(mcfa_fit$clust, iris[, 5])
+# 2
+```
+
 Functions `mfa` and `mcfa` fits multivariate normals to the data, fitting _t_-distributions can be achieved
 using `mtfa` and `mctfa` function. Further, there are functions to generate data from a `emmix`
 models (`rmix`), estimate factor scores (`factor_scores`), estimate adjusted Rand Index (`ari`),
