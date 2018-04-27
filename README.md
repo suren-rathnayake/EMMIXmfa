@@ -31,12 +31,19 @@ R can be done using,
 mfa_fit <- mfa(Y = iris[, -5], g = 3, q = 2, sigma_type = "common", D_type = "common")
 
 # Fit a Gaussian mixture model using MCFA
+set.seed(1984)
 mcfa_fit <- mcfa(Y = iris[, -5], g = 3, q = 2)
 ```
 
 The groupings can be visualized in the _q_-dimensional factor space.
 ```
 plot_factors(mcfa_fit)
+```
+![Plot of the factor scores](https://raw.githubusercontent.com/suren-rathnayake/misc/master/iris_mcfa_q2.png)
+
+Adjust Rand Index
+```
+ari(mcfa_fit$clust, iris[, 5])
 ```
 Functions `mfa` and `mcfa` fits multivariate normals to the data, fitting _t_-distributions can be achieved
 using `mtfa` and `mctfa` function. Further, there are functions to generate data from a `emmix`
