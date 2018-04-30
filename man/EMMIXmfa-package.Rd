@@ -36,9 +36,9 @@ model parameters are obtained using the Expectation--Maximization algorithm.
 \tabular{ll}{
 Package: \tab EMMIXmfa\cr
 Type: \tab Package\cr
-Version: \tab 1.3.9\cr
-Date: \tab 2017-10-18\cr
-License: \tab GPL\cr
+Version: \tab 1.4.7\cr
+Date: \tab 2018-04-30\cr
+License: \tab GPL (>= 2)\cr
 }
 %%~~ An overview of how to use the package, including the most important ~~
 %%~~ functions ~~
