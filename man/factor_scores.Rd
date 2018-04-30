@@ -9,28 +9,48 @@
 This function computes factor scores given a data set and
 a \code{EMMIXmfa} model. Using factor scores, 
 we can represent the original data point \eqn{y_j} in 
-\emph{q}-dimensional reduced space by plotting the estimated
-conditional expectation of the unobservable factors 
+\emph{q}-dimensional reduced space. This is only meaningful
+in the case of \code{mcfa} or \code{mctfa} models, 
+as the factor cores for \code{mfa} and \code{mtfa} are
+white noise.
+
+The (estimated conditional expectation of) unobservable factors 
 \eqn{U_{ij}} given \eqn{y_j} and the component membership
-which can be expressed by,
+can be expressed by,
 \deqn{
 \hat{u}_{ij} = E_{\hat{\Psi}}\{U_{ij} \mid y_j, z_{ij} = 1\}.
 }
-have obtained the estimated factor score
-corresponding to \eqn{y_j} (\eqn{j = 1, \dots, n}) as 
-\eqn{\hat{u}_{j}} as the mean of the estimated conditional expected
-component scores \eqn{\hat{u}_{ij}} over the estimated posterior
-distribution as of the component membership of \eqn{y_j},
+
+The estimated mean \eqn{U_{ij}} (over the 
+component membership of \eqn{y_j})
+is give as 
 \deqn{
-\hat{u}_{j} = \sum_{i=1}^g \tau_i(y_j; \hat{\Psi}) \hat{u}_{ij}.
+\hat{u}_{j} = \sum_{i=1}^g \tau_i(y_j; \hat{\Psi}) \hat{u}_{ij},
 }
+where \eqn{\tau_i(y_j; \hat{\Psi})}
+estimated posterior probability of \eqn{y_j}
+belonging to the \eqn{i}th component.
+    
+An alternative estimate of \eqn{u_j}, the posterior expectation
+of the factor corresponding to the \emph{j}th observation \eqn{y_j}, is
+defined by replacing \eqn{\tau_i(y_j;\,\hat{\Psi})} by \eqn{\hat{z}_{ij}},
+where
+\eqn{\hat{z}_{ij} = 1}, if \eqn{\hat{\tau}_i(y_j; \hat{\Psi})}
+>= \eqn{\hat{\tau_h}(y_j; \hat{\Psi})
+(h=1,\,\dots,\,g; h \neq i)}, else
+\eqn{\hat{z}_{ij} = 0}.
+\deqn{
+\hat{u}_{j}^C = \sum_{i=1}^g \hat{z}_{ij} \hat{u}_{ij}.
+}
+
+
 For MFA, we have 
 \deqn{
 \hat{u}_{ij} = \hat{\beta}_i^T (y_j - \hat{\mu}_i),
 }
 and
 \deqn{
-\hat{u}_{ij} = \sum_{i=1}^g \tau_i(y_j;  \hat{\Psi}) \hat{\beta}_i^T 
+\hat{u}_{j} = \sum_{i=1}^g \tau_i(y_j;  \hat{\Psi}) \hat{\beta}_i^T 
   (y_j - \hat{\mu}_i)
 }
 for \eqn{j = 1, \dots, n} where 
@@ -49,18 +69,8 @@ where \eqn{\gamma_i =  (A \Omega_i A + D)^{-1} A \Omega_i}.
 With M\eqn{t}FA and MC\eqn{t}FA, the distribution of 
 the expression of \eqn{\hat{u}_{ij}} and \eqn{\hat{u}_{j}}
 have the same form as those of MFA and MCFA, respectively.
-
-An alternative estimate of \eqn{u_j}, the posterior expectation
-of the factor corresponding to the \emph{j}th observation \eqn{y_j}, is
-defined by replacing \eqn{\tau_i(y_j;\,\hat{\Psi})} by \eqn{\hat{z}_{ij}}, 
-where
-\eqn{\hat{z}_{ij} = 1}, if \eqn{\hat{\tau}_i(y_j; \hat{\Psi})}
->= \eqn{\hat{\tau_h}(y_j; \hat{\Psi})  
-(h=1,\,\dots,\,g; h \neq i)}, else 
-\eqn{\hat{z}_{ij} = 0}.
-
-
 }
+
 \usage{
 factor_scores(model, Y, ...)
 \method{factor_scores}{mcfa}(model, Y, tau = NULL, clust= NULL, ...)
@@ -93,19 +103,21 @@ in the factor space.
 \value{
   \item{Uscores}{
     Estimated conditional expected component scores of the 
-    unobservable factors given the data and the component membership.
+    unobservable factors given the data and the component membership
+    (\eqn{\hat{u}_{ij}}).
     Size is \eqn{n \times q \times g}, where \code{n} is the number of sample,
     \code{q} is the number of factors and \code{g} is the number components.
 }
   \item{Umean}{
    Means of the estimated conditional expected factors scores over
-   estimated posterior distributions. Size \eqn{n \times q}.
+   estimated posterior distributions (\eqn{\hat{u}_{j}}).
+   Size \eqn{n \times q}.
 }
  \item{Uassign}{
  Alternative estimate of \code{Umean} where the posterior probabilities
  for each sample are replaced by component indicator vectors 
  which contain one in the element corresponding to the highest posterior 
- probability while others zero.  Size \eqn{n \times q}.
+ probability while others zero (\eqn{\hat{u}_{j}^C}).  Size \eqn{n \times q}.
 }
 
 }
