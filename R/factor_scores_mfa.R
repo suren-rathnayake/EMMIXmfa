@@ -36,13 +36,13 @@ if (sigma_type == "common") {
     U[,, i] <- sweep(Y, 2, mu[, i, drop = FALSE], '-') %*% gamma
   }
 }
-
-if (is.null(tau))
-  tau <- tau.mfa(Y = Y, g = g, q = q, pivec = pivec, B = B, 
+if (is.null(tau)) {
+  tau <- tau.mfa(Y = Y, g = g, q = q, pivec = pivec, B = B,
                   mu = mu, D = D, sigma_type = sigma_type, D_type = D_type)
-
-if(is.null(clust))
+}
+if (is.null(clust)) {
   clust <- apply(tau, 1, which.max)
+}
 
 UC <- array(0, c(n, q))
 Umean <- array(0, c(n, q))
@@ -52,5 +52,5 @@ for (i in 1 : n) {
   Umean[i, ] <- tau[i, ] %*% t(matrix(U[i,, ], c(q, g)))
 }
 
-return(list(Uscores = U, Uassign = UC, Umean = Umean))
+return(list(Uscores = U, Uclust = UC, Umean = Umean))
 }

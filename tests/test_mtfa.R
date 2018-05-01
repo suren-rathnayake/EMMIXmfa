@@ -23,7 +23,7 @@ Om1 <- rbind(c(0.1, 0), c(0, 0.45))
 Om2 <- rbind(c(0.45, 0), c(0, 0.1))
 Om3 <- rbind(c(0.45, 0), c(0, 0.1))
 Om4 <- rbind(c(0.1, 0), c(0, 0.45))
-Om5 <- rbind(c(1, 0.9), c(0.9, 1))  
+Om5 <- rbind(c(1, 0.9), c(0.9, 1))
 A <- rbind(A1, A2)
 D <- diag(c(runif(p1, 0.1, 0.3), runif(p2, 0.3, 0.8)))
 pivec <- c(pi1, pi2, pi3, pi4, pi5)
@@ -42,7 +42,7 @@ cls <- array(NA, c(n, 1))
 
 for( i in 1 : n)  {
   Pi <- 0
-  r <- runif(1) 
+  r <- runif(1)
   for( j in 1 : g) {
     Pi <- Pi + pivec[j]
     if(r < Pi) {
@@ -62,7 +62,7 @@ n <- nrow(Y)
 
 context("mtfa uc")
 
-model <- mtfa(Y, g, q, nkmeans = 4, nrandom = 4, tol = 1.e-5, 
+model <- mtfa(Y, g, q, nkmeans = 4, nrandom = 4, tol = 1.e-5,
              sigma_type = "unique", D_type = "common")
 
 expect_that(model, is_a("mtfa"))
@@ -92,8 +92,8 @@ expect_that(g, equals(ncol(model$tau)))
 expect_that(n, equals(nrow(model$Umean)))
 expect_that(q, equals(ncol(model$Umean)))
 
-expect_that(n, equals(nrow(model$Uassign)))
-expect_that(q, equals(ncol(model$Uassign)))
+expect_that(n, equals(nrow(model$Uclust)))
+expect_that(q, equals(ncol(model$Uclust)))
 
 dim_U <- dim(model$Uscores)
 expect_that(n, equals(dim_U[1]))
@@ -136,8 +136,8 @@ expect_that(n,   equals(nrow(model$tau)))
 expect_that(g,   equals(ncol(model$tau)))
 expect_that(n,   equals(nrow(model$Umean)))
 expect_that(q,   equals(ncol(model$Umean)))
-expect_that(n,   equals(nrow(model$Uassign)))
-expect_that(q,   equals(ncol(model$Uassign)))
+expect_that(n,   equals(nrow(model$Uclust)))
+expect_that(q,   equals(ncol(model$Uclust)))
 dim_U <- dim(model$Uscores)
 expect_that(n,   equals(dim_U[1]))
 expect_that(q,   equals(dim_U[2]))
@@ -150,10 +150,10 @@ model <- mtfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
 
 dim_D <- dim(model$D)
 expect_that(p,   equals(dim_D[1]))
-expect_that(p,   equals(dim_D[2]))  
+expect_that(p,   equals(dim_D[2]))
 dim_sigma <- dim(model$B)
 expect_that(p,   equals(dim_sigma[1]))
-expect_that(q,   equals(dim_sigma[2]))  
+expect_that(q,   equals(dim_sigma[2]))
 
 fac <- factor_scores(model, Y)
 
@@ -164,8 +164,8 @@ expect_that(dim(fac$Uscores)[1], equals(n))
 expect_that(dim(fac$Uscores)[2], equals(q))
 expect_that(dim(fac$Uscores)[3], equals(g))
 
-expect_that(dim(fac$Uassign)[1], equals(n))
-expect_that(dim(fac$Uassign)[2], equals(q))
+expect_that(dim(fac$Uclust)[1], equals(n))
+expect_that(dim(fac$Uclust)[2], equals(q))
 
 expect_that(dim(fac$Umean)[1], equals(n))
 expect_that(dim(fac$Umean)[2], equals(q))

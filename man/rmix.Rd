@@ -22,9 +22,9 @@ rmix(n, model, ...)
   }
 }
 \details{
-This function uses \code{rmvnorm} and 
-\code{rmvt} functions from the 
-\pkg{mvtnorm} package to generate samples 
+This function uses \code{rmvnorm} and
+\code{rmvt} functions from the
+\pkg{mvtnorm} package to generate samples
 from the mixture components.
 
 Algorithm works by first drawing a component based on
@@ -53,6 +53,6 @@ a sample from the component distribution.
  dat <- rmix(n = 10, model = model)
 }
 }
-\keyword{ cluster}
-\keyword{ multivariate}
-\keyword{ models}
+\keyword{multivariate}
+\keyword{distribution}
+\keyword{datagen}

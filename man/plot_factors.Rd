@@ -15,7 +15,7 @@ plot_factors(scores, type = "Umean",
 \arguments{
   \item{scores}{
   A list containing factor scores specified by
-  \code{Umean}, \code{Uassign} or \code{Uscores}, or a
+  \code{Umean}, \code{Uclust} or \code{Uscores}, or a
   model of class \code{mcfa, mctfa, mfa}, or \code{mtfa}.
 }
   \item{type}{
@@ -37,7 +37,7 @@ plot_factors(scores, type = "Umean",
 }
 }
 \details{
-The \code{type} should either be \code{"Uscores"}, \code{"Uassign"} or
+The \code{type} should either be \code{"Uscores"}, \code{"Uclust"} or
 the default \code{"Umean"}.
 If \code{type = "Uscores"}, then the estimated conditional expected component
 scores of the unobservable factors given the data and the component membership
@@ -45,7 +45,7 @@ are plotted.
 If \code{type = "Umean"}, then the means of the estimated conditional
 expected factors scores over estimated posterior distributions
 are plotted.
-If \code{type = "Uassign"}, then an alternative estimate of \code{"Umean"},
+If \code{type = "Uclust"}, then an alternative estimate of \code{"Umean"},
 where the posterior probabilities are replaced by component
 indicator vector, is plotted.
 }
@@ -80,8 +80,8 @@ plot (model)
 #can provide alternative groupings of samples via plot_factors
 plot_factors (model, clust = iris[indSample, 5])
 
-#same as plot_factors(model, tyep = "Uassign")
-plot (model, type = "Uassign")
+#same as plot_factors(model, tyep = "Uclust")
+plot (model, type = "Uclust")
 
 Y <- iris[-c(indSample), -5]
 Y <- as.matrix(Y)

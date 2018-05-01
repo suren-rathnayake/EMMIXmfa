@@ -6,7 +6,7 @@
 \alias{mtfa.default}
 \alias{plot.mtfa}
 \title{
-Mixtures of Factor Analyzers.
+Mixtures of Factor Analyzers
 }
 \description{
 Functions for fitting Mixtures of Factor Analyzers (MFA) and
@@ -15,8 +15,8 @@ Maximum Likelihood estimates of the model parameters are obtained
 using the Alternating Expectation Conditional Maximization (AECM)
 algorithm.
 
-In the case of MFA, coponent distributions belong to the family of 
-multivariate Gaussian distributions, while with M\eqn{t}FA 
+In the case of MFA, coponent distributions belong to the family of
+multivariate Gaussian distributions, while with M\eqn{t}FA
 the component distributions corresponds to multivariate
 \emph{t} distributions.
 
@@ -62,7 +62,7 @@ mtfa(Y, g, q, ...)
  \item{sigma_type}{
   This allows to specify whether the covariance matrices (for \code{mfa})
   or the scale matrices (for \code{mtfa}) are constraint
-  to be the same (default, \code{sigma_type = "common"}) 
+  to be the same (default, \code{sigma_type = "common"})
   for each  component or not (\code{sigma_type = "unique"}).
 }
  \item{D_type}{
@@ -156,16 +156,16 @@ Details of the components are as fellows:
   Vector of integers 1 to g indicating cluster allocations
   of the observations.
 }
-  \item{U}{
+  \item{Uscores}{
     Estimated conditional expected component scores of the
     unobservable factors given the data and the component membership.
     Size is Size \eqn{n \times q \times g}.
 }
-  \item{Fmat}{
+  \item{Umean}{
    Means of the estimated conditional expected factors scores over
    estimated posterior distributions. Size \eqn{n \times q}.
 }
- \item{UC}{
+ \item{Uclust}{
  Alternative estimate of \code{Fmat} where the posterior probabilities
  for each sample are replaced by component indicator vectors
  which contain one in the element corresponding to the highest posterior
@@ -184,8 +184,8 @@ Details of the components are as fellows:
 }
 }
 \references{
-Ghahramani Z, and Hinton GE (1997). \emph{The EM algorithm for mixture 
-of factor analyzers}. 
+Ghahramani Z, and Hinton GE (1997). \emph{The EM algorithm for mixture
+of factor analyzers}.
 Technical Report, CRG-TR-96-1, University of Toronto, Toronto.
 
 McLachlan GJ, Peel D, and Bean RW (2003). Modelling high-dimensional data
@@ -215,6 +215,6 @@ Suren Rathnayake, Geoffrey McLachlan
   plot(model)
   summary(model)
 }
-\keyword{ cluster}
-\keyword{ multivariate }
-\keyword{ models }% __ONLY ONE__ keyword per line
+\keyword{cluster}
+\keyword{multivariate}
+\keyword{models}

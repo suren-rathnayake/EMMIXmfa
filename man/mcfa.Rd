@@ -10,20 +10,20 @@ Mixture of Common Factor Analyzers
 \description{
 Functions for fitting Mixtures Common Factor Analyzers (MCFA)
 models.
-MCFA models are mixture of factor analyzers 
+MCFA models are mixture of factor analyzers
 (belong to the class of multivariate finite mixture models)
-with a common component matrix for the  
-factor loadings before the transformation of the latent factors to be 
-white noise. It is designed specifically for the task of displaying the 
-observed data points in a  lower (q-dimensional) space, 
-where q is the number of factors adopted in the 
+with a common component matrix for the
+factor loadings before the transformation of the latent factors to be
+white noise. It is designed specifically for the task of displaying the
+observed data points in a  lower (q-dimensional) space,
+where q is the number of factors adopted in the
 factor-analytic representation of the observed vector.
 
-The \code{mcfa} function fits Mixtures Common Factor Analyzers 
-where the  components distributions belong to the family of 
+The \code{mcfa} function fits Mixtures Common Factor Analyzers
+where the  components distributions belong to the family of
 multivariate Gaussian distributions.
 The \code{mctfa} function fits
-Mixtures of Common \emph{t}-Factor Analyzers where 
+Mixtures of Common \emph{t}-Factor Analyzers where
 the component distributions corresponds to multivariate
 \emph{t} distributions.
 Maximum likelihood estimates of the model parameters are obtained
@@ -33,13 +33,13 @@ using the Expectation--Maximization algorithm.
 \usage{
 mcfa(Y, g, q, ...)
 mctfa(Y, g, q, ...)
-\method{mcfa}{default}(Y, g, q, itmax = 500, nkmeans = 5, nrandom = 20, 
-  tol = 1.e-5, init_clust = NULL, init_para = NULL, 
-  init_method = NULL, conv_measure = 'diff', 
-  warn_messages = TRUE, ...) 
-\method{mctfa}{default}(Y, g, q, itmax = 500, nkmeans = 5, nrandom = 20, 
-  tol = 1.e-5, df_init = rep(30, g), df_update = TRUE, 
-  init_clust = NULL, init_para = NULL, init_method = NULL, 
+\method{mcfa}{default}(Y, g, q, itmax = 500, nkmeans = 5, nrandom = 20,
+  tol = 1.e-5, init_clust = NULL, init_para = NULL,
+  init_method = NULL, conv_measure = 'diff',
+  warn_messages = TRUE, ...)
+\method{mctfa}{default}(Y, g, q, itmax = 500, nkmeans = 5, nrandom = 20,
+  tol = 1.e-5, df_init = rep(30, g), df_update = TRUE,
+  init_clust = NULL, init_para = NULL, init_method = NULL,
   conv_measure = 'diff', warn_messages = TRUE, ...)
 \method{plot}{emmix}(x, ...)
 }
@@ -61,44 +61,44 @@ Number of factors.
 Maximum number of EM iterations.
 }
   \item{nkmeans}{
-  The number of times the k-means algorithm to be used in partition 
-  the data into \code{g} groups. These groupings are then used in 
+  The number of times the k-means algorithm to be used in partition
+  the data into \code{g} groups. These groupings are then used in
   initializing the parameters for the EM algorithm.
 }
   \item{nrandom}{
-  The number of random \code{g}-group partitions for the data to be used 
-  initializing the EM algorithm.  
+  The number of random \code{g}-group partitions for the data to be used
+  initializing the EM algorithm.
 }
   \item{tol}{
-  The EM algorithm terminates if the measure of convergence falls below 
-  this value. 
+  The EM algorithm terminates if the measure of convergence falls below
+  this value.
 }
   \item{init_clust}{
   A vector or matrix consisting of partition of samples to be used
-  in the EM algorithm. For matrix of partitions, columns must corresponds 
+  in the EM algorithm. For matrix of partitions, columns must corresponds
   individual partitions of the data. Optional.
 }
   \item{init_para}{
-  A list containing model parameters to be used as initial 
+  A list containing model parameters to be used as initial
   parameter estimates for the EM algorithm. Optional.
 }
   \item{init_method}{
   To determine how the initial parameter values are computed. See Details.
-}  
+}
   \item{conv_measure}{
-  The default \code{'diff'} stops the EM iterations if 
+  The default \code{'diff'} stops the EM iterations if
   |\eqn{l^{(k+1)}} - \eqn{l^{(k)}}| < \code{tol} where
-  \eqn{l^{(k)}} is the log-likelihood at the \eqn{k}th EM iteration. 
-  If \code{'ratio'}, then the convergence of the EM steps is measured 
-  using the |(\eqn{l^{(k+1)}} - \eqn{l^{(k)}})/\eqn{l^{(k+1)}}|. 
+  \eqn{l^{(k)}} is the log-likelihood at the \eqn{k}th EM iteration.
+  If \code{'ratio'}, then the convergence of the EM steps is measured
+  using the |(\eqn{l^{(k+1)}} - \eqn{l^{(k)}})/\eqn{l^{(k+1)}}|.
 }
   \item{df_init}{
-  Initial values of the degree of freedom parameters for \code{mctfa}. 
+  Initial values of the degree of freedom parameters for \code{mctfa}.
 }
   \item{df_update}{
   If \code{df_update = TRUE} (default), then the degree of freedom parameters
-  values will be updated during the EM iterations. 
-  Otherwise, if \code{df_update = FALSE}, they will be fixed at the initial 
+  values will be updated during the EM iterations.
+  Otherwise, if \code{df_update = FALSE}, they will be fixed at the initial
   values specified in \code{df_init}.
 }
   \item{warn_messages}{
@@ -117,24 +117,24 @@ model parameters are initialized using all available methods.
 
 \code{init_method = "rand-A"}, initialization of
 the parameters is done by using the procedure in
-Baek et al. (2010) where initial values for elements of 
-\eqn{A} are drawn from the \eqn{N(0, 1)} distribution. 
+Baek et al. (2010) where initial values for elements of
+\eqn{A} are drawn from the \eqn{N(0, 1)} distribution.
 This method is appropriate when the columns of the data
-are on the same scale. The 
+are on the same scale. The
 \code{init_method = "eigen-A"}
 takes the first \eqn{q} eigenvectors of \eqn{Y} as the
 loading matrix \eqn{A}.
-%%#With this method, the \strong{columns of the 
+%%#With this method, the \strong{columns of the
 %%#data need to be normalized}.
 
-If specified, the optional argument \code{init_para} 
-must be a list, 
+If specified, the optional argument \code{init_para}
+must be a list,
 or an object of class "mcfa" or "mctfa".
 When fitting an \code{mcfa} model, only the
 model parameters \code{q}, \code{g},
 \code{pivec}, \code{A}, \code{xi},
 \code{omega}, and \code{D} are extracted from
-\code{init_para}, while one extra parameter     
+\code{init_para}, while one extra parameter
 \code{nu} is extracted when fitting \code{mctfa}.
 Everything else in \code{init_para} will be discarded.
 }
@@ -155,7 +155,7 @@ Details of the components are as follows:
   Loading matrix. Size \eqn{p \times q}.
 }
   \item{xi}{
-  Matrix containing factor means for components in columns. 
+  Matrix containing factor means for components in columns.
   Size \eqn{q \times g}.
 }
   \item{omega}{
@@ -165,23 +165,23 @@ Details of the components are as follows:
   \item{D}{
   Error covariance matrix. Size \eqn{p \times p.}
 }
-  \item{U}{
-    Estimated conditional expected component scores of the 
+  \item{Uscores}{
+    Estimated conditional expected component scores of the
     unobservable factors given the data and the component membership.
     Size is Size \eqn{n \times q \times g}.
 }
-  \item{Fmat}{
+  \item{Umean}{
    Means of the estimated conditional expected factors scores over
    estimated posterior distributions. Size \eqn{n \times q}.
 }
- \item{UC}{
+ \item{Uclust}{
  Alternative estimate of \code{Fmat} where the posterior probabilities
- for each sample are replaced by component indicator vectors 
- which contain one in the element corresponding to the highest posterior 
+ for each sample are replaced by component indicator vectors
+ which contain one in the element corresponding to the highest posterior
  probability while others zero.  Size \eqn{n \times q}.
 }
   \item{clust}{Cluster labels.
-} 
+}
   \item{tau}{Posterior probabilities.
 }
   \item{logL}{Log-likelihood for the model.
@@ -214,13 +214,14 @@ Suren Rathnayake, Jangsun Baek, Geoff McLachlan
 \code{\link{mfa}}, \code{\link{plot_factors}}
 }
 \examples{
-mcfa_fit <- mcfa(iris[, -5], g = 3, q = 3, itmax = 250, 
+mcfa_fit <- mcfa(iris[, -5], g = 3, q = 3, itmax = 250,
                 nkmeans = 5, nrandom = 5, tol = 1.e-5)
 
 plot(mcfa_fit)
+
+mctfa_fit <- mcfa(iris[, -5], g = 3, q = 3, itmax = 250,
+                nkmeans = 5, nrandom = 5, tol = 1.e-5, df_update = TRUE)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{cluster}
 \keyword{multivariate}
-\keyword{models}% __ONLY ONE__ keyword per line
+\keyword{models}

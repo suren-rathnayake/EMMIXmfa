@@ -10,7 +10,7 @@ Print Method for Class 'emmix'
 }
 \description{
 Prints a formatted model parameters of
-\code{EMMIXmfa} objects. 
+\code{EMMIXmfa} objects.
 }
 \usage{
 \method{print}{emmix}(x, ...)
@@ -38,4 +38,4 @@ print(model)
 summary(model)
 }
 }
-\keyword{ cluster }
+\keyword{print}

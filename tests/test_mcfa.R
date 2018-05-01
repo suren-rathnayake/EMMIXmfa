@@ -22,7 +22,7 @@ Om1 <- rbind(c(0.1, 0), c(0, 0.45))
 Om2 <- rbind(c(0.45, 0), c(0, 0.1))
 Om3 <- rbind(c(0.45, 0), c(0, 0.1))
 Om4 <- rbind(c(0.1, 0), c(0, 0.45))
-Om5 <- rbind(c(1, 0.9), c(0.9, 1)) 	
+Om5 <- rbind(c(1, 0.9), c(0.9, 1))
 A <- rbind(A1, A2)
 D <- diag(c(runif(p1, 0.1, 0.3), runif(p2, 0.3, 0.8)))
 pivec <- c(pi1, pi2, pi3, pi4, pi5)
@@ -41,7 +41,7 @@ cls <- array(NA, c(n, 1))
 
 for ( i in 1 : n)  {
   Pi <- 0
-  r <- runif(1) 
+  r <- runif(1)
   for( j in 1 : g) {
     Pi <- Pi + pivec[j]
     if(r < Pi) {
@@ -91,8 +91,8 @@ expect_that(g, equals(ncol(model$tau)))
 expect_that(n, equals(nrow(model$Umean)))
 expect_that(q, equals(ncol(model$Umean)))
 
-expect_that(n, equals(nrow(model$Uassign)))
-expect_that(q, equals(ncol(model$Uassign)))
+expect_that(n, equals(nrow(model$Uclust)))
+expect_that(q, equals(ncol(model$Uclust)))
 
 dim_U <- dim(model$Uscores)
 expect_that(n, equals(dim_U[1]))
@@ -134,8 +134,8 @@ expect_that(g,   equals(ncol(model$tau)))
 expect_that(n,   equals(nrow(model$Umean)))
 expect_that(q,   equals(ncol(model$Umean)))
 
-expect_that(n,   equals(nrow(model$Uassign)))
-expect_that(q,   equals(ncol(model$Uassign)))
+expect_that(n,   equals(nrow(model$Uclust)))
+expect_that(q,   equals(ncol(model$Uclust)))
 
 dim_U <- dim(model$Uscores)
 expect_that(n,   equals(dim_U[1]))
@@ -177,8 +177,8 @@ expect_that(g, equals(ncol(model$tau)))
 expect_that(n, equals(nrow(model$Umean)))
 expect_that(q, equals(ncol(model$Umean)))
 
-expect_that(n, equals(nrow(model$Uassign)))
-expect_that(q, equals(ncol(model$Uassign)))
+expect_that(n, equals(nrow(model$Uclust)))
+expect_that(q, equals(ncol(model$Uclust)))
 
 dim_U <- dim(model$Uscores)
 expect_that(n, equals(dim_U[1]))
@@ -222,8 +222,8 @@ expect_that(g,   equals(ncol(model$tau)))
 expect_that(n,   equals(nrow(model$Umean)))
 expect_that(q,   equals(ncol(model$Umean)))
 
-expect_that(n,   equals(nrow(model$Uassign)))
-expect_that(q,   equals(ncol(model$Uassign)))
+expect_that(n,   equals(nrow(model$Uclust)))
+expect_that(q,   equals(ncol(model$Uclust)))
 
 dim_U <- dim(model$Uscores)
 expect_that(n,   equals(dim_U[1]))
@@ -246,10 +246,8 @@ expect_that(dim(fac$Uscores)[1], equals(n))
 expect_that(dim(fac$Uscores)[2], equals(q))
 expect_that(dim(fac$Uscores)[3], equals(g))
 
-expect_that(dim(fac$Uassign)[1], equals(n))
-expect_that(dim(fac$Uassign)[2], equals(q))
+expect_that(dim(fac$Uclust)[1], equals(n))
+expect_that(dim(fac$Uclust)[2], equals(q))
 
 expect_that(dim(fac$Umean)[1], equals(n))
 expect_that(dim(fac$Umean)[2], equals(q))
-
-

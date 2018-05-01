@@ -5,14 +5,14 @@
 \alias{predict.mtfa}
 \alias{predict.mctfa}
 \title{
-Extend Clustering to New Observations 
+Extend Clustering to New Observations
 }
 \description{
-Given a fitted model of class 
+Given a fitted model of class
 \code{'emmix'} (or of class
-\code{'mfa'}, \code{'mcfa'}, \code{'mtfa'} and 
-\code{'mctfa'}) and 
-a set of observations, 
+\code{'mfa'}, \code{'mcfa'}, \code{'mtfa'} and
+\code{'mctfa'}) and
+a set of observations,
 the \code{predict} function provides
 a clustering of new observations based on
 fitted values.
@@ -26,7 +26,7 @@ fitted values.
 }
   \item{Y}{
     A data matrix with variable in the same
-    column locations as the data used in 
+    column locations as the data used in
     fitting the model \code{object}.
 }
   \item{\dots}{
@@ -48,4 +48,5 @@ pred_clust <- predict(model, iris[-test, -5])
 err(pred_clust, iris[-test, 5])
 }
 }
-\keyword{ cluster }
+\keyword{cluster}
+\keyword{methods}

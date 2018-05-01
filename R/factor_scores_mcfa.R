@@ -1,8 +1,8 @@
 factor_scores_mcfa <- function(Y, g, q, pivec, A, xi, omega, D,
                                tau = NULL, clust = NULL, ...) {
-                               
-p <- ncol(Y) 
-if(is.null(p)) 
+
+p <- ncol(Y)
+if(is.null(p))
   p <- 1
 n <- nrow(Y)
 
@@ -12,13 +12,13 @@ gamma <- array(0, c(p, q, g))
 invD <- diag(1 / diag(D))
 for (i in 1 : g) {
   gamma[,, i] <- (invD - invD %*% A %*%
-                   chol.inv(chol.inv(omega[,, i]) + 
+                   chol.inv(chol.inv(omega[,, i]) +
                    t(A) %*% invD %*% A) %*%
                    t(A) %*% invD) %*% A %*% omega[,, i]
 
   U[,, i] <- t(replicate(n , xi[, i, drop = FALSE], 'matrix'))
 
-  U[,, i] <- U[,, i] + 
+  U[,, i] <- U[,, i] +
               (Y - t(replicate(n, A%*% xi[, i, drop = FALSE], "matrix"))) %*%
               as.matrix(gamma[,, i])
 }
@@ -37,6 +37,5 @@ for (i in 1 : n) {
   Umean[i, ] <- tau[i, ] %*% t(matrix(U[i,, ], c(q, g)))
 }
 
-return(list(Uscores = U, Uassign = UC, Umean = Umean))
+return(list(Uscores = U, Uclust = UC, Umean = Umean))
 }
-
