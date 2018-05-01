@@ -1,6 +1,5 @@
 \name{plot_factors}
 \alias{plot_factors}
-\alias{plotscores}
 \title{
  Plot Function for Factor Scores.
 }

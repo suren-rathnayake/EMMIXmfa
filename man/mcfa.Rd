@@ -3,11 +3,6 @@
 \alias{mcfa.default}
 \alias{mctfa}
 \alias{mctfa.default}
-\alias{print.mcfa}
-\alias{print.mctfa}
-\alias{predict.mcfa}
-\alias{predict.mctfa}
-\alias{summary.emmix}
 \alias{plot.emmix}
 \title{
 Mixture of Common Factor Analyzers
@@ -34,72 +29,6 @@ the component distributions corresponds to multivariate
 Maximum likelihood estimates of the model parameters are obtained
 using the Expectation--Maximization algorithm.
 
-
-% An observation vector \eqn{y} distributed
-% \deqn{
-% f(y; \Psi) = \psi(y; \mu_i, \Sigma_i)
-% }
-% with probability \eqn{\pi_i} (\eqn{i = i, \dots, g})
-% with \eqn{\sum_i^g = 1} where
-% \eqn{\psi(y; \mu, \Sigma)} is the \eqn{p} variate
-% normal distribution with mean \eqn{\mu} and 
-% covariance matrix \eqn{\Sigma}. 
-
-
-% MCFA adds the following 
-% restrictions to,
-% \deqn{
-% \Sigma_i= A \Omega_i A^T + D \quad (i=1,\,\ldots,\,g)
-% }
-% and
-% \deqn{
-% \mu_i = A \xi_i \quad (i=1,\,\ldots,\,g),
-% }
-% where \eqn{A} is a \eqn{p \times q} matrix, \eqn{\xi_i} is a
-% \eqn{q}-dimensional vector, \eqn{\Omega_i} is a 
-% \eqn{q \times q} positive
-% definite symmetric matrix, and \eqn{D} is a diagonal 
-% \eqn{p \times p} matrix.
-
-% With this representation,
-% the component distribution of \eqn{Y_j} is modelled as
-% \deqn{
-% Y_j = A U_{ij} + e_{ij}
-% }
-% with prob. \eqn{\pi_i (i = 1,\,\ldots,\,g)}
-% for \eqn{j = 1,\,\ldots,\,n}, where the (unobservable) factors
-% \eqn{U_{i1},\,\ldots,\,U_{in}} are distributed independently
-% \eqn{N({\xi_i},\,\Omega_i)}, independently of
-% the \eqn{e_{ij}}, which are distributed independently
-% \eqn{N(0,\,D)}, where \eqn{D} is a diagonal matrix,
-% \eqn{(i = 1,\,\ldots,\,g)}.
-
-% The MC\eqn{t}FA model is similar to the MCFA model
-% except the component distributions corresponds to multivariate
-% \emph{t} distributions.
-% The joint distribution of \eqn{y_j} and associated factors \eqn{u_{ij}}
-% are taken to be distributed according to the multivariate 
-% \emph{t}-distribution
-% \deqn{
-% \left(\begin{array}{c}
-% Y_{j} \\
-% U_{ij}
-% \end{array} \right) | z_{ij}=1 \sim t(\mu_i^{*}, 
-% \Sigma_i^{*}, \nu_i)
-% \quad (i = 1, \dots, g), 
-% }
-% where \eqn{\mu_i^*} and \eqn{\Sigma_i^*} are defined as in
-% the case of MCFA.
-% % \deqn{
-% % \left(\begin{array}{c}
-% % Y_{j} \\
-% % U_{ij}
-% % \end{array} \right) | w_j, z_{ij}=1 \sim N(\mu_i^{*}, \Sigma_i^{*}/w_j) 
-% % \quad (i = 1, \dots, g),
-% % }
-% % where \eqn{w_j} is distributed according the gamma distribution 
-% % \eqn{\phi_G(w_j; \nu_i/2, \nu_i/2)}.
-
 }
 \usage{
 mcfa(Y, g, q, ...)
@@ -112,19 +41,14 @@ mctfa(Y, g, q, ...)
   tol = 1.e-5, df_init = rep(30, g), df_update = TRUE, 
   init_clust = NULL, init_para = NULL, init_method = NULL, 
   conv_measure = 'diff', warn_messages = TRUE, ...)
-\method{print}{mcfa}(x, ...)
-\method{print}{mctfa}(x, ...)
-\method{summary}{emmix}(object, ...)
 \method{plot}{emmix}(x, ...)
-\method{predict}{mctfa}(object, Y, ...)
-\method{predict}{mcfa}(object, Y, ...)
 }
 \arguments{
   \item{Y}{
   A matrix or a data frame of which rows correspond to
   observations and columns to variables.
 }
-\item{x, object}{
+\item{x}{
    An object of class \code{mcfa} or \code{mctfa}.
 }
   \item{g}{
@@ -286,9 +210,9 @@ Hoboken, New Jersey: Wiley, pp. 171--191.
 \author{
 Suren Rathnayake, Jangsun Baek, Geoff McLachlan
 }
-%%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%%}
+\seealso{
+\code{\link{mfa}}, \code{\link{plot_factors}}
+}
 \examples{
 mcfa_fit <- mcfa(iris[, -5], g = 3, q = 3, itmax = 250, 
                 nkmeans = 5, nrandom = 5, tol = 1.e-5)

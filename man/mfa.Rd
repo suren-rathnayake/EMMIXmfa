@@ -1,13 +1,9 @@
 \name{mfa}
 \alias{mfa}
 \alias{mfa.default}
-\alias{print.mfa}
-\alias{summary.mfa}
 \alias{plot.mfa}
 \alias{mtfa}
 \alias{mtfa.default}
-\alias{print.mtfa}
-\alias{summary.mtfa}
 \alias{plot.mtfa}
 \title{
 Mixtures of Factor Analyzers.
@@ -211,10 +207,6 @@ Hoboken, New Jersey: Wiley, pp. 171--191.
 \author{
 Suren Rathnayake, Geoffrey McLachlan
 }
-%%\note{
-%%}
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
 \code{\link{mcfa}}
 }

@@ -11,7 +11,8 @@ rmix(n, model, ...)
 }
 \arguments{
   \item{model}{
-  Model of class \code{mcfa, mctfa, mfa}, or \code{mtfa}.
+  An object of class \code{'emmix'} containing a mode of
+  \code{mfa, mcfa, mtfa}, or \code{mctfa}.
 }
   \item{n}{
   Number of sample to generate.
@@ -40,9 +41,9 @@ a sample from the component distribution.
 % McLachlan GJ, and Peel D (2000).
 % \emph{Finite Mixture Models}. New York: Wiley.
 % }
-\author{
-Geoffrey McLachlan, Suren Rathnayake
-}
+% \author{
+% Geoffrey McLachlan, Suren Rathnayake
+% }
 %%\note{
 %%}
 \examples{
