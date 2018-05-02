@@ -167,6 +167,7 @@ Hmodel <- append(Hmodel, do.call('factor_scores_mtfa',
 Hmodel$call <- match.call()
 if(warn_messages == TRUE)
   Hmodel$warn_msg <- warn_msg
+Hmodel["W"] <- NULL
 class(Hmodel) <- c("emmix", "mtfa")
 return(Hmodel)
 }

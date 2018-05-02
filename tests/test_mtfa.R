@@ -65,6 +65,10 @@ context("mtfa uc")
 model <- mtfa(Y, g, q, nkmeans = 4, nrandom = 4, tol = 1.e-5,
              sigma_type = "unique", D_type = "common")
 
+expect_named(model, c("g", "q", "pivec", "B", "mu", "D", "sigma_type", "D_type",
+  "v", "df_update", "logL", "tau", "BIC", "clust", "Uscores", "Uclust", "Umean",
+  "call"))
+
 expect_that(model, is_a("mtfa"))
 expect_that(model, is_a("emmix"))
 

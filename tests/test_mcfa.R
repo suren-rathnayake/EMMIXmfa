@@ -8,7 +8,7 @@ p = p1 + p2
 q = 2
 g = 5
 n <- 50
-pi1=0.15; pi2=0.2; pi3=0.15; pi4=0.2; pi5=0.3
+pi1 <- 0.15; pi2 <- 0.2; pi3 <- 0.15; pi4 <- 0.2; pi5 <- 0.3
 A1 <- rbind(c(0.5, 0),   c(-0.9, 0),    c(0.3, 0),
              c(0.6, 0.8), c(0.2, -0.7), c(-0.7, 0.5),
              c(0, 0.6), c(0, -0.4), c(0, 0.3), c(0, -0.5))
@@ -18,11 +18,11 @@ xi2 <- c(-2.5, 0)
 xi3 <- c(2.5, 0)
 xi4 <- c(0, -2.5)
 xi5 <- c(0, 0)
-Om1 <- rbind(c(0.1, 0), c(0, 0.45))
+Om1 <- rbind(c(0.1,  0), c(0, 0.45)) 
 Om2 <- rbind(c(0.45, 0), c(0, 0.1))
 Om3 <- rbind(c(0.45, 0), c(0, 0.1))
-Om4 <- rbind(c(0.1, 0), c(0, 0.45))
-Om5 <- rbind(c(1, 0.9), c(0.9, 1))
+Om4 <- rbind(c(0.1,  0), c(0, 0.45))
+Om5 <- rbind(c(1,  0.9), c(0.9, 1))
 A <- rbind(A1, A2)
 D <- diag(c(runif(p1, 0.1, 0.3), runif(p2, 0.3, 0.8)))
 pivec <- c(pi1, pi2, pi3, pi4, pi5)
@@ -60,40 +60,35 @@ p <- ncol(Y)
 n <- nrow(Y)
 
 context("mcfa")
-
 model <- mcfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5)
+
 expect_that(model, is_a("mcfa"))
 expect_that(model, is_a("emmix"))
+expect_named(model, c("g", "q", "pivec", "A", "xi", "omega",
+	"D", "logL", "tau", "BIC", "clust", "Uscores", "Uclust", "Umean",
+	"call", "warn_msg"))
 
 expect_that(g, equals(model$g))
 expect_that(q, equals(model$q))
-
 expect_that(g, equals(length(model$pivec)))
 expect_that(1, equals(sum(model$pivec)))
-
 expect_that(p,   equals(nrow(model$A)))
 expect_that(q,   equals(ncol(model$A)))
-
 expect_that(q,   equals(nrow(model$xi)))
 expect_that(g,   equals(ncol(model$xi)))
 
 dim_omega <- dim(model$omega)
-expect_that(q,   equals(dim_omega[1]))
-expect_that(q,   equals(dim_omega[2]))
-expect_that(g,   equals(dim_omega[3]))
-
-expect_that(p,   equals(nrow(model$D)))
-expect_that(p,   equals(ncol(model$D)))
-
+expect_that(q, equals(dim_omega[1]))
+expect_that(q, equals(dim_omega[2]))
+expect_that(g, equals(dim_omega[3]))
+expect_that(p, equals(nrow(model$D)))
+expect_that(p, equals(ncol(model$D)))
 expect_that(n, equals(nrow(model$tau)))
 expect_that(g, equals(ncol(model$tau)))
-
 expect_that(n, equals(nrow(model$Umean)))
 expect_that(q, equals(ncol(model$Umean)))
-
 expect_that(n, equals(nrow(model$Uclust)))
 expect_that(q, equals(ncol(model$Uclust)))
-
 dim_U <- dim(model$Uscores)
 expect_that(n, equals(dim_U[1]))
 expect_that(q, equals(dim_U[2]))
@@ -107,33 +102,24 @@ q <- 1
 model <- mcfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5)
 expect_that(model, is_a("mcfa"))
 expect_that(model, is_a("emmix"))
-
 expect_that(g,   equals(model$g))
 expect_that(q,   equals(model$q))
-
 expect_that(g,  equals(length(model$pivec)))
 expect_that(1,   equals(sum(model$pivec)))
-
 expect_that(p,   equals(nrow(model$A)))
 expect_that(q,   equals(ncol(model$A)))
-
 expect_that(q,   equals(nrow(model$xi)))
 expect_that(g,   equals(ncol(model$xi)))
-
 dim_omega <- dim(model$omega)
 expect_that(q,   equals(dim_omega[1]))
 expect_that(q,   equals(dim_omega[2]))
 expect_that(g,   equals(dim_omega[3]))
-
 expect_that(p,   equals(nrow(model$D)))
 expect_that(p,   equals(ncol(model$D)))
-
 expect_that(n,   equals(nrow(model$tau)))
 expect_that(g,   equals(ncol(model$tau)))
-
 expect_that(n,   equals(nrow(model$Umean)))
 expect_that(q,   equals(ncol(model$Umean)))
-
 expect_that(n,   equals(nrow(model$Uclust)))
 expect_that(q,   equals(ncol(model$Uclust)))
 
@@ -148,45 +134,37 @@ context("mctfa")
 
 q <- 1
 model <- mctfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5)
+expect_named(model, c("g", "q", "pivec", "A", "xi", "omega",
+  "D", "v", "df_update", "logL", "tau", "BIC", "clust", "Uscores", "Uclust", "Umean",
+  "call", "warn_msg"))
+
 expect_that(model, is_a("mctfa"))
 expect_that(model, is_a("emmix"))
-
 expect_that(g,   equals(model$g))
 expect_that(q,   equals(model$q))
-
 expect_that(g,  equals(length(model$pivec)))
 expect_that(1,   equals(sum(model$pivec)))
-
 expect_that(p,   equals(nrow(model$A)))
 expect_that(q,   equals(ncol(model$A)))
-
 expect_that(q,   equals(nrow(model$xi)))
 expect_that(g,   equals(ncol(model$xi)))
-
 dim_omega <- dim(model$omega)
 expect_that(q,   equals(dim_omega[1]))
 expect_that(q,   equals(dim_omega[2]))
 expect_that(g,   equals(dim_omega[3]))
-
 expect_that(p,   equals(nrow(model$D)))
 expect_that(p,   equals(ncol(model$D)))
-
 expect_that(n, equals(nrow(model$tau)))
 expect_that(g, equals(ncol(model$tau)))
-
 expect_that(n, equals(nrow(model$Umean)))
 expect_that(q, equals(ncol(model$Umean)))
-
 expect_that(n, equals(nrow(model$Uclust)))
 expect_that(q, equals(ncol(model$Uclust)))
-
 dim_U <- dim(model$Uscores)
 expect_that(n, equals(dim_U[1]))
 expect_that(q, equals(dim_U[2]))
 expect_that(g, equals(dim_U[3]))
-
 expect_that(n, equals(length(model$clust)))
-
 expect_that(g, equals(length(model$v)))
 
 q <- 2
@@ -215,13 +193,10 @@ expect_that(g,   equals(dim_omega[3]))
 
 expect_that(p,   equals(nrow(model$D)))
 expect_that(p,   equals(ncol(model$D)))
-
 expect_that(n,   equals(nrow(model$tau)))
 expect_that(g,   equals(ncol(model$tau)))
-
 expect_that(n,   equals(nrow(model$Umean)))
 expect_that(q,   equals(ncol(model$Umean)))
-
 expect_that(n,   equals(nrow(model$Uclust)))
 expect_that(q,   equals(ncol(model$Uclust)))
 
@@ -229,25 +204,20 @@ dim_U <- dim(model$Uscores)
 expect_that(n,   equals(dim_U[1]))
 expect_that(q,   equals(dim_U[2]))
 expect_that(g,   equals(dim_U[3]))
-
 expect_that(n,   equals(length(model$clust)))
-
 expect_that(g, equals(length(model$v)))
-
 expect_that(rep(30, g), is_equivalent_to(model$v))
 
 
 fac <- factor_scores(model, Y)
+expect_named(fac, c("Uscores", "Uclust", "Umean"))
 
 expect_that(fac, is_a("list"))
 expect_that(model, is_a("emmix"))
-
 expect_that(dim(fac$Uscores)[1], equals(n))
 expect_that(dim(fac$Uscores)[2], equals(q))
 expect_that(dim(fac$Uscores)[3], equals(g))
-
 expect_that(dim(fac$Uclust)[1], equals(n))
 expect_that(dim(fac$Uclust)[2], equals(q))
-
 expect_that(dim(fac$Umean)[1], equals(n))
 expect_that(dim(fac$Umean)[2], equals(q))

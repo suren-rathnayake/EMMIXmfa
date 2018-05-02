@@ -175,6 +175,7 @@ Hmodel$call <- match.call()
 if (is.null(warn_msg)) warn_msg <- "no warnings"
 if (warn_messages == TRUE)
    Hmodel$warn_msg <- warn_msg
+Hmodel["W"] <- NULL
 class(Hmodel) <- c("emmix", "mctfa")
 return(Hmodel)
 }
