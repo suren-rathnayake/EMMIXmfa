@@ -18,7 +18,7 @@ xi2 <- c(-2.5, 0)
 xi3 <- c(2.5, 0)
 xi4 <- c(0, -2.5)
 xi5 <- c(0, 0)
-Om1 <- rbind(c(0.1,  0), c(0, 0.45)) 
+Om1 <- rbind(c(0.1,  0), c(0, 0.45))
 Om2 <- rbind(c(0.45, 0), c(0, 0.1))
 Om3 <- rbind(c(0.45, 0), c(0, 0.1))
 Om4 <- rbind(c(0.1,  0), c(0, 0.45))
@@ -50,7 +50,6 @@ for ( i in 1 : n)  {
       break
     }
   }
-
   Y[i,] <-  rmvnorm(1, mu[,comp], sigma[,,comp])
 }
 
@@ -76,7 +75,6 @@ expect_that(p,   equals(nrow(model$A)))
 expect_that(q,   equals(ncol(model$A)))
 expect_that(q,   equals(nrow(model$xi)))
 expect_that(g,   equals(ncol(model$xi)))
-
 dim_omega <- dim(model$omega)
 expect_that(q, equals(dim_omega[1]))
 expect_that(q, equals(dim_omega[2]))
@@ -93,7 +91,6 @@ dim_U <- dim(model$Uscores)
 expect_that(n, equals(dim_U[1]))
 expect_that(q, equals(dim_U[2]))
 expect_that(g, equals(dim_U[3]))
-
 expect_that(n, equals(length(model$clust)))
 
 g <- 1
@@ -127,9 +124,7 @@ dim_U <- dim(model$Uscores)
 expect_that(n,   equals(dim_U[1]))
 expect_that(q,   equals(dim_U[2]))
 expect_that(g,   equals(dim_U[3]))
-
 expect_that(n,   equals(length(model$clust)))
-
 context("mctfa")
 
 q <- 1

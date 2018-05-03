@@ -36,7 +36,7 @@ ERR <- is_valid_args.mtfa(Y, g, q, itmax, nkmeans, nrandom, tol, df_init,
 if (class(ERR) == "error") {
 
   stop(unclass(ERR))
-} 
+}
 
 pb <- txtProgressBar(style=3, char='.')
 prog <- 0
@@ -54,7 +54,7 @@ if (!is.null(init_para)) {
   init_para <- init_para[c("g", "q", "pivec", "mu", "B", "D",
                              "sigma_type", "D_type")]
 
-  estd_model <- est.mtfa(init_para = init_para, Y = Y, 
+  estd_model <- est.mtfa(init_para = init_para, Y = Y,
                            itmax = itmax, tol = tol,
                            v = v, df_update = df_update,
                            conv_measure = conv_measure)
@@ -165,8 +165,8 @@ Hmodel$clust <- apply(Hmodel$tau, 1, which.max)
 Hmodel <- append(Hmodel, do.call('factor_scores_mtfa',
                   c(list(Y = Y), Hmodel)))
 Hmodel$call <- match.call()
-if(warn_messages == TRUE)
-  Hmodel$warn_msg <- warn_msg
+if (warn_messages == TRUE)
+   Hmodel <- c(Hmodel, list(warn_msg = warn_msg))
 Hmodel["W"] <- NULL
 class(Hmodel) <- c("emmix", "mtfa")
 return(Hmodel)

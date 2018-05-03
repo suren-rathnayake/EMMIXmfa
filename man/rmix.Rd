@@ -32,11 +32,8 @@ the mixture proprotion in the model, and then drawing
 a sample from the component distribution.
 }
 \value{
-  \item{dat}{
-  Matrix with samples drawn in rows.
+  A numeric matrix with samples drawn in rows.
 }
-}
-
 % \references{
 % McLachlan GJ, and Peel D (2000).
 % \emph{Finite Mixture Models}. New York: Wiley.

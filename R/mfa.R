@@ -34,10 +34,10 @@ ERR <- is_valid_args.mfa(Y, g, q, itmax, nkmeans, nrandom, tol,
 if (class(ERR) == "error") {
 
   stop(unclass(ERR))
-} 
+}
 
 # if (class(ERR) == "error") {
-  
+
 #   print(paste("Error:", ERR[1]))
 #   return(ERR)
 # }
@@ -59,7 +59,7 @@ if (!is.null(init_para)) {
 
   init_para <- init_para[c("g", "q", "pivec", "mu", "B", "D",
                            "sigma_type", "D_type")]
-  
+
   estd_model <- est.mfa(init_para = init_para, Y = Y, g = g, q = q,
                         itmax = itmax, tol = tol,
                         conv_measure = conv_measure)
@@ -163,7 +163,7 @@ Hmodel <- append(Hmodel, do.call('factor_scores_mfa',
                 c(list(Y = Y), Hmodel)))
 Hmodel$call <- match.call()
 if (warn_messages == TRUE)
-  Hmodel$warn_msg <- warn_msg
+   Hmodel <- c(Hmodel, list(warn_msg = warn_msg))
 
 class(Hmodel) <- c("emmix", "mfa")
 return(Hmodel)
