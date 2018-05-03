@@ -66,7 +66,7 @@ model <- mfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-5,
              sigma_type = "unique", D_type = "common")
 expect_named(model, c("g", "q", "pivec", "B", "mu", "D",
   "sigma_type", "D_type", "logL", "tau", "BIC", "clust", "Uscores", "Uclust", "Umean",
-  "call"))
+  "call", "warn_msg"))
 
 expect_that(model, is_a("mfa"))
 expect_that(model, is_a("emmix"))

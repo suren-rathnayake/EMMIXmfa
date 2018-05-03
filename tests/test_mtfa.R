@@ -67,7 +67,7 @@ model <- mtfa(Y, g, q, nkmeans = 4, nrandom = 4, tol = 1.e-5,
 
 expect_named(model, c("g", "q", "pivec", "B", "mu", "D", "sigma_type", "D_type",
   "v", "df_update", "logL", "tau", "BIC", "clust", "Uscores", "Uclust", "Umean",
-  "call"))
+  "call", "warn_msg"))
 
 expect_that(model, is_a("mtfa"))
 expect_that(model, is_a("emmix"))
