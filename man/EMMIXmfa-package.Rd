@@ -8,29 +8,32 @@
 Mixture Models with Component-Wise Factor Analyzers
 }
 \description{
-This package provides functions for cluster analysis using
-mixtures of factor analyzers (MFA) and mixture of common factor
-analyzers (MCFA) models.
+This package provides functions fitting mixtures of  factor analyzers (MFA)
+and mixtures of common factor analyzers (MCFA) models.
 
 MFA and MCFA models belong to the class of finite mixture models,
-and they adopt component-wise factor analyzers to multivariate data.
-Component distributions can either be from the family of multivariate normals
-or from the family of multivariate \emph{t}-distributions.
-Maximum likelihood estimators of model parameters are obtained using
-the Expectation-Maximization algorithm.
+that adopt factor models for the component-covariance matrices.
+More specifically, under the factor model,
+the correlation between feature variables can be estimated by their
+linear dependance of these variables on a smaller small number
+\emph{q} of (unobservable) latent factors.
+The component distributions can be either from the family of
+multivariate normals or from the family of multivariate
+\emph{t}-distributions.
+Maximum likelihood estimation of model parameters
+is implemented using the Expectation-Maximization algorithm.
 
-MCFA models are mixture of factor analyzers with a common component
-matrix for the
-factor loadings before the transformation of the latent factors to be
-white noise. It is designed specifically for the task of displaying the
-observed data points in a  lower (\emph{q}-dimensional) space,
-where \emph{q} is the number of factors adopted in the
-factor-analytic representation of the observed vector.
+The joint distribution of the factors and errors can be taken
+to be either the multivariate normal or \emph{t}-distribution.
+The factor analytic representation of the component-covariance
+matrices as a way of dimension reduction in that it
+enable the mixture distributions
+to be fitted  to data with dimension \emph{p}
+relatively large compared to the sample size \emph{n}.
+
+Unlike MFA, MCFA models can be used to display
+observed data points in the \emph{q}-dimensional factor space.
 It also provides a greater reduction in the number of parameters in the model.
-Component distributions can be either from the family of multivariate normals
-or from the family of multivariate \emph{t}-distributions.
-Maximum likelihood estimators of
-model parameters are obtained using the Expectation--Maximization algorithm.
 }
 \details{
 \tabular{ll}{
