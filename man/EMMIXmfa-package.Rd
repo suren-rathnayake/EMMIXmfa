@@ -58,6 +58,11 @@ of factor analyzers model to incorporate the multivariate \emph{t}
 distribution.
 \emph{Computational Statistics & Data Analysis}, \strong{51}, 5327--5338.
 
+Baek, J. and McLachlan, G.J. (2008). Mixtures of factor analyzers with
+common factor loadings for the clustering and visualisation of
+high-dimensional data. \emph{Technical Report NI08018-SCH}, Preprint Series
+of the Isaac Newton Institute for Mathematical Sciences, Cambridge.
+
 Baek J, McLachlan GJ, and Flack LK (2010). Mixtures of factor analyzers
 with common factor loadings: applications to the clustering and visualisation
 of high-dimensional data. \emph{IEEE Transactions on Pattern Analysis and
