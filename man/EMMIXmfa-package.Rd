@@ -33,7 +33,8 @@ relatively large compared to the sample size \emph{n}.
 
 Unlike MFA, MCFA models can be used to display
 observed data points in the \emph{q}-dimensional factor space.
-It also provides a greater reduction in the number of parameters in the model.
+MCFA also provides a greater reduction in the number of
+parameters in the model.
 }
 \details{
 \tabular{ll}{
