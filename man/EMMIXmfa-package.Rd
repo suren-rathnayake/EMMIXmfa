@@ -79,7 +79,7 @@ for clustering highdimensional microarray data.
 \keyword{multivariate}
 \keyword{model}
 \seealso{
-\code{\link{mfa}}, \code{\link{mcfa}}
+\code{\link{EMMIXcskew}}, \code{\link{EMMIXuskew}}
 }
 \examples{
 \dontrun{
