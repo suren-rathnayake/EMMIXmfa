@@ -15,26 +15,26 @@ mixtures of common factor analyzers (MCFA) models.
 MFA and MCFA models belong to the class of finite mixture models,
 that adopt factor models for the component-covariance matrices.
 More specifically, under the factor model,
-the correlation between feature variables can be estimated by their
+the correlations between feature variables can be explained by the 
 linear dependance of these variables on a smaller small number
 \emph{q} of (unobservable) latent factors.
 The component distributions can be either from the family of
 multivariate normals or from the family of multivariate
 \emph{t}-distributions.
-Maximum likelihood estimation of model parameters
-is implemented using the Expectation-Maximization algorithm.
+Maximum likelihood estimation of the model parameters
+is implemented using the Expectation--Maximization algorithm.
 
 The joint distribution of the factors and errors can be taken
 to be either the multivariate normal or \emph{t}-distribution.
 The factor analytic representation of the component-covariance
-matrices as a way of dimension reduction in that it
-enable the mixture distributions
+matrices is a way of dimension reduction in that it
+enables the mixture distributions
 to be fitted  to data with dimension \emph{p}
 relatively large compared to the sample size \emph{n}.
 
-Unlike MFA, MCFA models can be used to display
+Unlike MFA, MCFA models can be used to display the 
 observed data points in the \emph{q}-dimensional factor space.
-MCFA also provides a greater reduction in the number of
+The MCFA would also provides a greater reduction in the number of
 parameters in the model.
 }
 \details{
