@@ -8,8 +8,9 @@
 Mixture Models with Component-Wise Factor Analyzers
 }
 \description{
-This package provides functions fitting mixtures of  factor analyzers (MFA)
-and mixtures of common factor analyzers (MCFA) models.
+This package provides functions for fitting
+mixtures of factor analyzers (MFA) and
+mixtures of common factor analyzers (MCFA) models.
 
 MFA and MCFA models belong to the class of finite mixture models,
 that adopt factor models for the component-covariance matrices.
