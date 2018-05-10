@@ -47,20 +47,10 @@ License: \tab GPL (>= 2)\cr
 }
 }
 \author{
-%Who wrote it
 Suren Rathnayake, Jangsun Baek, Geoffrey McLachlan
 }
 \references{
-McLachlan GJ, Peel D, and Bean RW (2003). Modelling high-dimensional data
-by mixtures of factor analyzers.
-\emph{Computational Statistics & Data Analysis} \strong{41}, 379--388.
-
-McLachlan GJ, Bean RW, Ben-Tovim Jones L (2007). Extension of the mixture
-of factor analyzers model to incorporate the multivariate \emph{t}
-distribution.
-\emph{Computational Statistics & Data Analysis}, \strong{51}, 5327--5338.
-
-Baek, J. and McLachlan, G.J. (2008). Mixtures of factor analyzers with
+Baek J, and McLachlan GJ (2008). Mixtures of factor analyzers with
 common factor loadings for the clustering and visualisation of
 high-dimensional data. \emph{Technical Report NI08018-SCH}, Preprint Series
 of the Isaac Newton Institute for Mathematical Sciences, Cambridge.
@@ -73,6 +63,19 @@ Machine Intelligence} \strong{32}, 2089--2097.
 Baek J, and McLachlan GJ (2011). Mixtures of common \emph{t}-factor analyzers
 for clustering highdimensional microarray data.
 \emph{Bioinformatics} \strong{27}, 1269--1276.
+
+McLachlan GJ, and Peel D (2000). Mixtures of factor analyzers. In 
+\emph{Proceedings of the Seventeenth International Conference on Machine Learning},
+P. Langley (Ed.). San Francisco: Morgan Kaufmann, pp. 599--606.
+
+McLachlan GJ, Bean RW, Ben-Tovim Jones L (2007). Extension of the mixture
+of factor analyzers model to incorporate the multivariate \emph{t}
+distribution.
+\emph{Computational Statistics & Data Analysis}, \strong{51}, 5327--5338.
+
+McLachlan GJ, Peel D, and Bean RW (2003). Modelling high-dimensional data
+by mixtures of factor analyzers.
+\emph{Computational Statistics & Data Analysis} \strong{41}, 379--388.
 }
 \keyword{package}
 \keyword{clustering}
@@ -84,7 +87,7 @@ for clustering highdimensional microarray data.
 \examples{
 \dontrun{
 set.seed(1)
-Y <- scale(iris[, -5])
+Y <- iris[, -5]
 mfa_model <- mfa(Y, g = 3, q = 3)
 mtfa_model <- mtfa(Y, g = 3, q = 3)
 mcfa_model <- mcfa(Y, g = 3, q = 3)
