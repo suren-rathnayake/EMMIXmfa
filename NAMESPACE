@@ -1,6 +1,6 @@
 useDynLib(EMMIXmfa, cgmf)
 exportMethods(summary)
-export(err)
+export(minmis)
 export(ari)
 exportMethods(print)
 export(mcfa)

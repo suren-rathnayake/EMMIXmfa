@@ -23,7 +23,7 @@ perm <- function (n, r, v = 1 : n){
 }
 
 # the minimum number of misallocations
-err <- function(cls, hat_cls) {
+minmis <- function(cls, hat_cls) {
 
   if (length(cls) != length(hat_cls))
     stop('Length of the two arguments should be equal')

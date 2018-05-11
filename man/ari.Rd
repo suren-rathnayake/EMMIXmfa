@@ -11,16 +11,16 @@ ari(cls, hat_cls)
 }
 \arguments{
   \item{cls}{
-    Vector containing labels or classes.
+    Vector containing labels of classes.
 }
   \item{hat_cls}{
     Vector of labels same length as \code{cls}.
 }
 }
 \details{
-Measures the agreement between two set of partitions. 
-The upper bound 1 implies perfect agreement. 
-Expected value is zero if the partitions are random.
+Measures the agreement between two sets of partitions. 
+The upper bound of 1 implies perfect agreement. 
+The expected value is zero if the partitions are random.
 }
 \value{
 Scaler specifying how closely two partitions agree.    
@@ -31,7 +31,7 @@ Hubert L, and Arabie P (1985). Comparing Partitions.
 }
 
 \seealso{
-\code{\link{err}}
+\code{\link{minmis}}
 }
 \examples{
 \dontrun{
@@ -41,7 +41,7 @@ model <- mcfa(Y, g = 3, q = 3, nkmeans = 1, nrandom = 0)
 #
 ari(model$clust, iris[, 5])
 #
-err(model$clust, iris[, 5])
+minmis(model$clust, iris[, 5])
 }
 }
 \keyword{ cluster }

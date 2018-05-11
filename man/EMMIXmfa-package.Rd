@@ -82,7 +82,8 @@ by mixtures of factor analyzers.
 \keyword{multivariate}
 \keyword{model}
 \seealso{
-\code{\link{EMMIXcskew}}, \code{\link{EMMIXuskew}}
+\code{\link{EMMIXcskew}}, 
+\code{\link{EMMIXuskew}}
 }
 \examples{
 \dontrun{

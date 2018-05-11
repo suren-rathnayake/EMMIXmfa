@@ -48,11 +48,11 @@ ari(mcfa_fit$clust, iris[, 5])
 ```
 and the number of misallocations
 ```
-err(mcfa_fit$clust, iris[, 5])
+minmis(mcfa_fit$clust, iris[, 5])
 # 2
 ```
 
 Functions `mfa` and `mcfa` fits multivariate normals to the data, fitting _t_-distributions can be achieved
 using `mtfa` and `mctfa` function. Further, there are functions to generate data from a `emmix`
 models (`rmix`), estimate factor scores (`factor_scores`), estimate adjusted Rand Index (`ari`),
-find the number of misallocations (`err`), among others.
+find the number of misallocations (`minmis`), among others.

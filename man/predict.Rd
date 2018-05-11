@@ -45,7 +45,7 @@ set.seed(42)
 test <- sample(1 : nrow(iris), 100)
 model <- mfa(iris[test, -5], g=3, q=3, itmax=500, nkmeans=3, nrandom=5)
 pred_clust <- predict(model, iris[-test, -5])
-err(pred_clust, iris[-test, 5])
+minmis(pred_clust, iris[-test, 5])
 }
 }
 \keyword{cluster}

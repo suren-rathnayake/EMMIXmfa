@@ -12,7 +12,7 @@ n <- nrow(Y)
 context("mfa")
 model <- mfa(Y, g, q, nkmeans = 2, nrandom = 2, tol = 1.e-1)
 
-expect_that(0, equals(err(model$clust, model$clust)))
+expect_that(0, equals(minmis(model$clust, model$clust)))
 expect_that(1, equals(ari(model$clust, model$clust)))
 expect_that(model$clust, equals(predict(model, Y)))
 

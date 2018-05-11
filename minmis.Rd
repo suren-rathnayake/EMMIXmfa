@@ -1,5 +1,5 @@
-\name{err}
-\alias{err}
+\name{minmis}
+\alias{minmis}
 \title{
  Minimum Number of Mis-Allocations.
 }
@@ -9,7 +9,7 @@ this function finds the minimum number of mis-allocations
 by rotating the categories.
 }
 \usage{
-err(cls, hat_cls)
+minmis(cls, hat_cls)
 }
 \arguments{
   \item{cls}{
@@ -42,7 +42,7 @@ set.seed(1984)
 Y <- scale(iris[, -5])
 model <- mcfa(Y, g = 3, q = 3, nkmeans = 1, nrandom = 0)
 ari(model$clust, iris[, 5])
-err(model$clust, iris[, 5])
+minmis(model$clust, iris[, 5])
 }
 }
 \keyword{ cluster }
