@@ -1,11 +1,10 @@
 \name{plot_factors}
 \alias{plot_factors}
 \title{
- Plot Function for Factor Scores.
+ Plot Function for Factor Scores
 }
 \description{
- Plot function for factor scores given factor
- score matrix of fitted model.
+ Plot functions for factor scores.
 }
 \usage{
 plot_factors(scores, type = "Umean",

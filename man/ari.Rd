@@ -4,17 +4,17 @@
 Computes adjusted Rand Index
 }
 \description{
-Computes adjusted Rand Index. 
+Computes adjusted Rand index. 
 }
 \usage{
 ari(cls, hat_cls)
 }
 \arguments{
   \item{cls}{
-    Vector containing labels of classes.
+    A numeric or character vector of labels.
 }
   \item{hat_cls}{
-    Vector of labels same length as \code{cls}.
+    A numeric or character vector of labels same length as \code{cls}.
 }
 }
 \details{

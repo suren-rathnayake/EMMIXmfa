@@ -3,27 +3,26 @@
 \alias{mcfa.default}
 \alias{mctfa}
 \alias{mctfa.default}
-\alias{plot.emmix}
 \title{
 Mixture of Common Factor Analyzers
 }
 \description{
-Functions for fitting Mixtures Common Factor Analyzers (MCFA)
+Functions for fitting mixtures of common factor analyzers (MCFA)
 models.
 MCFA models are mixture of factor analyzers
 (belong to the class of multivariate finite mixture models)
 with a common component matrix for the
 factor loadings before the transformation of the latent factors to be
 white noise. It is designed specifically for the task of displaying the
-observed data points in a  lower (q-dimensional) space,
-where q is the number of factors adopted in the
+observed data points in a  lower (\emph{q}-dimensional) space,
+where \emph{q} is the number of factors adopted in the
 factor-analytic representation of the observed vector.
 
-The \code{mcfa} function fits Mixtures Common Factor Analyzers
+The \code{mcfa} function fits mixtures common factor analyzers
 where the  components distributions belong to the family of
-multivariate Gaussian distributions.
+multivariate normal distributions.
 The \code{mctfa} function fits
-Mixtures of Common \emph{t}-Factor Analyzers where
+mixtures of common \emph{t}-factor analyzers where
 the component distributions corresponds to multivariate
 \emph{t} distributions.
 Maximum likelihood estimates of the model parameters are obtained
@@ -41,15 +40,11 @@ mctfa(Y, g, q, ...)
   tol = 1.e-5, df_init = rep(30, g), df_update = TRUE,
   init_clust = NULL, init_para = NULL, init_method = NULL,
   conv_measure = 'diff', warn_messages = TRUE, ...)
-\method{plot}{emmix}(x, ...)
 }
 \arguments{
   \item{Y}{
   A matrix or a data frame of which rows correspond to
   observations and columns to variables.
-}
-\item{x}{
-   An object of class \code{mcfa} or \code{mctfa}.
 }
   \item{g}{
 Number of components.
@@ -114,9 +109,8 @@ Not used.
 \details{
 With \code{init_method = NULL}, the default,
 model parameters are initialized using all available methods.
-
-\code{init_method = "rand-A"}, initialization of
-the parameters is done by using the procedure in
+With the \code{init_method = "rand-A"}, the initialization of
+the parameters is done using the procedure in
 Baek et al. (2010) where initial values for elements of
 \eqn{A} are drawn from the \eqn{N(0, 1)} distribution.
 This method is appropriate when the columns of the data
@@ -124,12 +118,9 @@ are on the same scale. The
 \code{init_method = "eigen-A"}
 takes the first \eqn{q} eigenvectors of \eqn{Y} as the
 loading matrix \eqn{A}.
-%%#With this method, the \strong{columns of the
-%%#data need to be normalized}.
 
 If specified, the optional argument \code{init_para}
-must be a list,
-or an object of class "mcfa" or "mctfa".
+must be a list or an object of class \code{mcfa} or \code{mctfa}.
 When fitting an \code{mcfa} model, only the
 model parameters \code{q}, \code{g},
 \code{pivec}, \code{A}, \code{xi},
@@ -168,14 +159,14 @@ Details of the components are as follows:
   \item{Uscores}{
     Estimated conditional expected component scores of the
     unobservable factors given the data and the component membership.
-    Size is Size \eqn{n \times q \times g}.
+    Size \eqn{n \times q \times g}.
 }
   \item{Umean}{
    Means of the estimated conditional expected factors scores over
    estimated posterior distributions. Size \eqn{n \times q}.
 }
  \item{Uclust}{
- Alternative estimate of \code{Fmat} where the posterior probabilities
+ Alternative estimate of \code{Umean} where the posterior probabilities
  for each sample are replaced by component indicator vectors
  which contain one in the element corresponding to the highest posterior
  probability while others zero.  Size \eqn{n \times q}.
@@ -184,9 +175,9 @@ Details of the components are as follows:
 }
   \item{tau}{Posterior probabilities.
 }
-  \item{logL}{Log-likelihood for the model.
+  \item{logL}{Log-likelihood at the convergence.
 }
-  \item{BIC}{Bayesian Information Criterion.
+  \item{BIC}{Bayesian information criterion.
 }
   \item{warn_msg}{Description of error messages, if any.
 }

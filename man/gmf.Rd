@@ -28,18 +28,17 @@ gmf(Y, q, maxit = 1000, lambda = 0.01, cor_rate = 0.9)
   }
 }
 \details{
-Unsupervised matrix factorization of the data matrix
-\eqn{X} can be expressed as,
+Unsupervised matrix factorization of a \eqn{n \times p} data matrix
+\eqn{Y} can be expressed as,
 \deqn{
- X \approx A B,
+ Y^{\top} \approx A B^{\top},
 }
 where \eqn{A} is a \eqn{p \times q} matrix and \eqn{B} is
-\eqn{q \times n} matrix.
-With matrix factorization one expects to replace the
-sample \eqn{x_{i}}, the \eqn{i}th row
-in matrix \eqn{X}, by the \eqn{i}th column, \eqn{b_{i}}, in matrix \eqn{B}.
-The matrices \eqn{A} and \eqn{B} are chosen to minimize objective
-function \eqn{f(X, A, B)} with under specific constraints
+\eqn{n \times q} matrix.
+With this matrix factorization method, one replaces 
+the \eqn{i}th row in matrix \eqn{Y} by the \eqn{i}th row in matrix \eqn{B}.
+The matrices \eqn{A} and \eqn{B} are chosen to minimize an objective
+function \eqn{f(Y, A, B)} with under constraints specific 
 to the matrix factorization method.
 
 It is imperative that columns of the data matrix be on the same scale.
@@ -48,8 +47,8 @@ of the data using this approach.
 }
 \value{
 A list containing,
-\item{A }{\eqn{p \times q} matrix}
-\item{B }{\eqn{q \times n} matrix}
+\item{A }{A numeric matrix of size \eqn{p \times q}}
+\item{B }{A numeric matrix of size \eqn{n \times q} matrix}
 %% ...
 }
 \references{

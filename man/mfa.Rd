@@ -9,17 +9,16 @@
 Mixtures of Factor Analyzers
 }
 \description{
-Functions for fitting Mixtures of Factor Analyzers (MFA) and
-Mixtures of \emph{t}-Factor Analyzers (M\emph{t}FA) to data.
+Functions for fitting mixtures of factor analyzers (MFA) and
+mixtures of \emph{t}-factor analyzers (M\emph{t}FA) to data.
 Maximum Likelihood estimates of the model parameters are obtained
 using the Alternating Expectation Conditional Maximization (AECM)
 algorithm.
 
-In the case of MFA, coponent distributions belong to the family of
-multivariate Gaussian distributions, while with M\eqn{t}FA
-the component distributions corresponds to multivariate
+In the case of MFA, component distributions belong to the family of
+multivariate normal distributions, while with M\eqn{t}FA
+the component distributions correspond to multivariate
 \emph{t} distributions.
-
 }
 \usage{
 mfa(Y, g, q, ...)
@@ -60,10 +59,11 @@ mtfa(Y, g, q, ...)
   this value.
 }
  \item{sigma_type}{
-  This allows to specify whether the covariance matrices (for \code{mfa})
-  or the scale matrices (for \code{mtfa}) are constraint
+  To specify whether the covariance matrices (for \code{mfa})
+  or the scale matrices (for \code{mtfa}) of the components
+  are constrained 
   to be the same (default, \code{sigma_type = "common"})
-  for each  component or not (\code{sigma_type = "unique"}).
+  or not (\code{sigma_type = "unique"}).
 }
  \item{D_type}{
   To specify whether the diagonal error covariance matrix is common to all
@@ -100,17 +100,16 @@ mtfa(Y, g, q, ...)
 }
  \item{warn_messages}{
   If \code{warn_messages = TRUE} (default), the output would
-  include error messages for instances, if any, where the
-  model fitting function failed to provide estimates of parameters.
-  Otherwise the messages will not be stored.
+  include some information on start of the EM algorithm where, if any,
+  it failed to provide a fitting.
 }
 \item{\dots}{
   Not used.
 }
 }
 \details{
-Cluster a given data set using Mixtures of Factor Analyzers or
-approach or using Mixtures of \emph{t}-Factor Analyzers.
+Cluster a given data set using mixtures of factor analyzers or
+approach or using mixtures of \emph{t}-factor analyzers.
 }
 \value{
 Object of class \code{c("emmix", "mfa")} or \code{c("emmix",
@@ -126,27 +125,27 @@ Details of the components are as fellows:
  Mixing proportions of the components.
 }
  \item{mu}{
-  Matrix containing estimates of component means for each mixture
-  component. Size \eqn{p \times g}.
+  Matrix containing estimates of component means (in columns) 
+  of mixture component. Size \eqn{p \times g}.
 }
  \item{B}{
   Array containing component dependent loading matrices. Size
   \eqn{p \times q \times g}.
 }
   \item{D}{
-  Estimates of error covariance matrices. If \code{D_type} = "common"
+  Estimates of error covariance matrices. If \code{D_type = "common"}
   was used then \code{D} is \eqn{p \times p} matrix common to
-  all components,  if \code{D_type} = "unique", then \code{D} is a
+  all components,  if \code{D_type = "unique"}, then \code{D} is a
   size \eqn{p \times p \times g} array.
 }
   \item{v}{
   Degrees of freedom for each component.
 }
   \item{logL}{
-  Log-likelihood.
+  Log-likelihood at the convergence.
 }
   \item{BIC}{
-  Bayesian Information Criterion.
+  Bayesian information criterion.
 }
   \item{tau}{
   Matrix of posterior probabilities for the data
@@ -166,35 +165,31 @@ Details of the components are as fellows:
    estimated posterior distributions. Size \eqn{n \times q}.
 }
  \item{Uclust}{
- Alternative estimate of \code{Fmat} where the posterior probabilities
+ Alternative estimate of \code{Umean} where the posterior probabilities
  for each sample are replaced by component indicator vectors
  which contain one in the element corresponding to the highest posterior
  probability while others zero.  Size \eqn{n \times q}.
 }
   \item{ERRMSG}{
-  Error messages.
+  Description of messages, if any.
 }
   \item{D_type}{
   Whether common or unique error covariance is used, as specified in
   model fitting.
 }
   \item{df_update}{
-  Whether DOF (\code{v}) was fixed or estimated, as specified in
-  model fitting.
+  Whether the degree of freedom parameter 
+  (\code{v}) was fixed or estimated (only for \code{mtfa}).
 }
 }
 \references{
-Ghahramani Z, and Hinton GE (1997). \emph{The EM algorithm for mixture
-of factor analyzers}.
-Technical Report, CRG-TR-96-1, University of Toronto, Toronto.
+Ghahramani Z, and Hinton GE (1997). 
+The EM algorithm for mixture of factor analyzers.
+\emph{Technical Report, CRG-TR-96-1}, University of Toronto, Toronto.
 
-McLachlan GJ, Peel D, and Bean RW (2003). Modelling high-dimensional data
-by mixtures of factor analyzers.
-\emph{Computational Statistics & Data Analysis} \strong{41}, 379--388.
-
-McLachlan GJ, Bean RW, Ben-Tovim Jones L (2007). Extension of the mixture
-of factor analyzers model to incorporate the multivariate \emph{t}
-distribution.
+McLachlan GJ, Bean RW, Ben-Tovim Jones L (2007). 
+Extension of the mixture of factor analyzers model to incorporate the 
+multivariate \emph{t} distribution.
 \emph{Computational Statistics & Data Analysis}, \strong{51}, 5327--5338.
 
 McLachlan GJ, Baek J, and Rathnayake SI (2011). Mixtures of factor analyzers
@@ -202,8 +197,11 @@ for the analysis of high-dimensional data.
 In \emph{Mixture Estimation and Applications},
 KL Mengersen, CP Robert, and DM Titterington (Eds).
 Hoboken, New Jersey: Wiley, pp. 171--191.
-}
 
+McLachlan GJ, Peel D, and Bean RW (2003). 
+Modelling high-dimensional data by mixtures of factor analyzers.
+\emph{Computational Statistics & Data Analysis} \strong{41}, 379--388.
+}
 \author{
 Suren Rathnayake, Geoffrey McLachlan
 }

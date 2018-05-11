@@ -2,13 +2,14 @@
 \alias{factor_scores}
 \alias{factor_scores.mcfa}
 \alias{factor_scores.mctfa}
+\alias{plot.emmix}
 \title{
  Computes Factor Scores
 }
 \description{
 This function computes factor scores given a data set and
-a \code{EMMIXmfa} model. Using factor scores,
-we can represent the original data point \eqn{y_j} in
+an \code{EMMIXmfa} model. Using factor scores,
+we can represent the original data point \eqn{y_j} in a 
 \emph{q}-dimensional reduced space. This is only meaningful
 in the case of \code{mcfa} or \code{mctfa} models,
 as the factor cores for \code{mfa} and \code{mtfa} are
@@ -65,8 +66,8 @@ For MCFA,
 }
 where \eqn{\gamma_i =  (A \Omega_i A + D)^{-1} A \Omega_i}.
 
-With M\eqn{t}FA and MC\eqn{t}FA, the distribution of
-the expression of \eqn{\hat{u}_{ij}} and \eqn{\hat{u}_{j}}
+With M\emph{t}FA and MC\emph{t}FA, the distribution of
+\eqn{\hat{u}_{ij}} and of \eqn{\hat{u}_{j}}
 have the same form as those of MFA and MCFA, respectively.
 }
 
@@ -74,10 +75,14 @@ have the same form as those of MFA and MCFA, respectively.
 factor_scores(model, Y, ...)
 \method{factor_scores}{mcfa}(model, Y, tau = NULL, clust= NULL, ...)
 \method{factor_scores}{mctfa}(model, Y, tau = NULL, clust= NULL, ...)
+\method{plot}{emmix}(x, ...)
 }
 \arguments{
   \item{model}{
-  Model of class \code{"mcfa"} or \code{"mctfa"}.
+   An object of class \code{mfa, mcfa, mtfa} or \code{mctfa}.
+}
+\item{x}{
+   An object of class \code{mfa, mcfa, mtfa} or \code{mctfa}.
 }
   \item{Y}{
   Data matrix with variables in columns in the same order as used in
@@ -85,7 +90,8 @@ factor_scores(model, Y, ...)
 }
   \item{tau}{
   Optional. Posterior probabilities of belonging to the components
-  in the mixture model. If not provided, they will be estimated.
+  in the mixture model. If not provided, they will be computed based on 
+  the \code{model} parameters.
 }
  \item{clust}{
  Optional. Indicators of belonging to the components.
