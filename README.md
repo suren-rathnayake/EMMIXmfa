@@ -15,7 +15,7 @@ the Expectation-Maximization algorithm.
 
 ## Installation
 
-Installingdirectly from suing the `devtools` package.
+Installingdirectly from using the `devtools` package.
 
 ```
 library(devtools)
