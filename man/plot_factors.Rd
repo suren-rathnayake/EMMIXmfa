@@ -36,36 +36,31 @@ plot_factors(scores, type = "Umean",
 }
 }
 \details{
+When the factor scores were obtained using \code{mcfa}
+or \code{mctfa}, then a visualization of the group structure 
+can be obtained by plotting the factor scores.
+In the case of \code{mfa} and \code{mtfa}, the factor scores
+simply corresponds to white noise.
+
 The \code{type} should either be \code{"Uscores"}, \code{"Uclust"} or
-the default \code{"Umean"}.
-If \code{type = "Uscores"}, then the estimated conditional expected component
-scores of the unobservable factors given the data and the component membership
-are plotted.
-If \code{type = "Umean"}, then the means of the estimated conditional
-expected factors scores over estimated posterior distributions
-are plotted.
-If \code{type = "Uclust"}, then an alternative estimate of \code{"Umean"},
-where the posterior probabilities are replaced by component
-indicator vector, is plotted.
+the default \code{"Umean"}. See \code{factor_scores} for a detailed
+description of the factor scores.
 }
-
 \references{
-McLachlan GJ, and Peel D (2000).
-\emph{Finite Mixture Models}. New York: Wiley.
-
-McLachlan GJ, Baek J, and Rathnayake SI (2011). Mixtures of factor analyzers
+McLachlan GJ, Baek J, and Rathnayake SI (2011). 
+Mixtures of factor analyzers
 for the analysis of high-dimensional data.
 In \emph{Mixture Estimation and Applications},
 KL Mengersen, CP Robert, and DM Titterington (Eds).
 Hoboken, New Jersey: Wiley, pp. 171--191.
-}
 
+McLachlan GJ, and Peel D (2000).
+\emph{Finite Mixture Models}. New York: Wiley.
+}
 \author{
 Geoffrey McLachlan, Suren Rathnayake, Jungsun Baek
 }
-
 \examples{
-
 # Visualizing data used in model estimation
 set.seed(1)
 inds <- dim(iris)[1]
@@ -90,8 +85,7 @@ minmis(clust, iris[-c(indSample), 5])
 fac_scores <- factor_scores(model, Y)
 plot_factors(fac_scores, type="Umean", clust = clust)
 plot_factors(fac_scores, type="Umean", clust = iris[-c(indSample), 5])
-
 }
-\keyword{ cluster}
-\keyword{ multivariate}
-\keyword{ models}
+\keyword{cluster}
+\keyword{multivariate}
+\keyword{models}

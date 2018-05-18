@@ -11,11 +11,8 @@ Extend Clustering to New Observations
 Given a fitted model of class
 \code{'emmix'} (or of class
 \code{'mfa'}, \code{'mcfa'}, \code{'mtfa'} and
-\code{'mctfa'}) and
-a set of observations,
-the \code{predict} function provides
-a clustering of new observations based on
-fitted values.
+\code{'mctfa'}), the \code{predict} function
+predict clusters for observations.
 }
 \usage{
 \method{predict}{emmix}(object, Y, ...)
@@ -35,9 +32,13 @@ fitted values.
 }
 \details{
 A vector integers of length equal to number of
-rows in the data. The integers range from 1 to
+observations (rows) in the data. The integers range from 1 to
 \eqn{g} where \eqn{g} in the number of components
 in the model.
+
+The variables in \code{Y} of the \code{predict} 
+function should be in the order as those used in
+obtaining the fitted model \code{object}.
 }
 \examples{
 \dontrun{
