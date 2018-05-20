@@ -3,7 +3,7 @@ print.emmix <- function(x, ...) {
   print(x$call)
 
   cat("\nCoefficients: \n")
-  cat("pi_i : ", round(x$pivec, 3), "\n")
+  cat("pi_i : ", round(x$pivec, 3), "\n\n")
 
   if ((any(class(x) == "mfa") || any(class(x) == "mtfa"))) {
     for(j in 1 : x$g) {
@@ -12,19 +12,21 @@ print.emmix <- function(x, ...) {
     }
 
     if(x$sigma_type == 'common') {
-      cat("B: \n ")
+      cat("\n B: \n ")
       print(x$B)
       cat("diag D: \n")
       print(diag(x$D))
 
     } else {
-
+      
+      cat("\n") 
       for(j in 1 : x$g) {
 
         cat("B_", j, ":\n", sep="")
         print(x$B[,, j])
       }
 
+      cat("\n") 
       if(x$D_type == 'common')
         cat("diag D: \n", diag(x$D), "\n")
 
@@ -35,6 +37,7 @@ print.emmix <- function(x, ...) {
     }
 
     if(any((class(x) == "mtfa"))) {
+      cat("\n")
       cat("nu: \n", x$v, '\n')
     }
   }
@@ -43,6 +46,7 @@ print.emmix <- function(x, ...) {
 
     cat("A: \n")
     print(x$A)
+    cat("\n")
 
     for(j in 1 : x$g) {
 
@@ -50,15 +54,18 @@ print.emmix <- function(x, ...) {
       print(x$xi[, j])
     }
 
+    cat("\n")
     for(j in 1:x$g) {
 
       cat("omega_", j, ":\n", sep="")
       print(x$omega[,, j])
     }
-
-    cat("diag D: \n", diag(x$D), "\n")
     
+    cat("\n")
+    cat("diag D: \n", diag(x$D), "\n")
+
     if(any((class(x) == "mctfa"))) {
+      cat("\n")
       cat("nu: \n", x$v, "\n")
     }
   }
