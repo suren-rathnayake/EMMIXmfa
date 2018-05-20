@@ -7,7 +7,7 @@ print.emmix <- function(x, ...) {
 
   if ((any(class(x) == "mfa") || any(class(x) == "mtfa"))) {
     for(j in 1 : x$g) {
-      cat("mu_", j, ":\n")
+      cat("mu_", j, ":\n", sep="")
       print(x$mu[, j])
     }
 
@@ -16,9 +16,12 @@ print.emmix <- function(x, ...) {
       print(x$B)
       cat("diag D: \n")
       print(diag(x$D))
+
     } else {
+
       for(j in 1 : x$g) {
-        cat("B_",j, ":\n")
+
+        cat("B_", j, ":\n", sep="")
         print(x$B[,, j])
       }
 
@@ -27,7 +30,7 @@ print.emmix <- function(x, ...) {
 
       if (x$D_type == 'unique') {
         for (i in 1 : x$g)
-          cat("diag D_", i, ":\n", diag(x$D[,, i]), "\n")
+          cat("diag D_", i, ":\n", diag(x$D[,, i]), "\n", sep="")
       }
     }
 
@@ -42,14 +45,19 @@ print.emmix <- function(x, ...) {
     print(x$A)
 
     for(j in 1 : x$g) {
-      cat("xi_",j,":\n")
+
+      cat("xi_", j, ":\n", sep="")
       print(x$xi[, j])
     }
+
     for(j in 1:x$g) {
-      cat("omega_",j, ":\n")
+
+      cat("omega_", j, ":\n", sep="")
       print(x$omega[,, j])
     }
+
     cat("diag D: \n", diag(x$D), "\n")
+    
     if(any((class(x) == "mctfa"))) {
       cat("nu: \n", x$v, "\n")
     }
