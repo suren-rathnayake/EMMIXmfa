@@ -61,6 +61,7 @@ McLachlan GJ, and Peel D (2000).
 Geoffrey McLachlan, Suren Rathnayake, Jungsun Baek
 }
 \examples{
+\dontrun{
 # Visualizing data used in model estimation
 set.seed(1)
 inds <- dim(iris)[1]
@@ -85,6 +86,7 @@ minmis(clust, iris[-c(indSample), 5])
 fac_scores <- factor_scores(model, Y)
 plot_factors(fac_scores, type="Umean", clust = clust)
 plot_factors(fac_scores, type="Umean", clust = iris[-c(indSample), 5])
+}
 }
 \keyword{cluster}
 \keyword{multivariate}

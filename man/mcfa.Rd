@@ -205,6 +205,7 @@ Suren Rathnayake, Jangsun Baek, Geoff McLachlan
 \code{\link{mfa}}, \code{\link{plot_factors}}
 }
 \examples{
+\dontrun{
 mcfa_fit <- mcfa(iris[, -5], g = 3, q = 3, itmax = 250,
                 nkmeans = 5, nrandom = 5, tol = 1.e-5)
 
@@ -212,6 +213,7 @@ plot(mcfa_fit)
 
 mctfa_fit <- mcfa(iris[, -5], g = 3, q = 3, itmax = 250,
                 nkmeans = 5, nrandom = 5, tol = 1.e-5, df_update = TRUE)
+}
 }
 \keyword{cluster}
 \keyword{multivariate}
