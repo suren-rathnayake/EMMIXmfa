@@ -1,4 +1,4 @@
-useDynLib(EMMIXmfa, cgmf)
+useDynLib(EMMIXmfa)
 exportMethods(summary)
 export(minmis)
 export(ari)
