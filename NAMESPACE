@@ -1,4 +1,4 @@
-useDynLib(EMMIXmfa)
+useDynLib(EMMIXmfa, .registration = TRUE)
 exportMethods(summary)
 export(minmis)
 export(ari)

@@ -81,10 +81,6 @@ by mixtures of factor analyzers.
 \keyword{clustering}
 \keyword{multivariate}
 \keyword{model}
-\seealso{
-\code{\link{EMMIXcskew}}, 
-\code{\link{EMMIXuskew}}
-}
 \examples{
 \dontrun{
 set.seed(1)
