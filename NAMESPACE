@@ -1,4 +1,4 @@
-useDynLib(EMMIXmfa, .registration = TRUE)
+useDynLib(EMMIXmfa, "cgmf", .registration = TRUE)
 exportMethods(summary)
 export(minmis)
 export(ari)
