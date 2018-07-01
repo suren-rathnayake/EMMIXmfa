@@ -82,7 +82,7 @@ by mixtures of factor analyzers.
 \keyword{multivariate}
 \keyword{model}
 \examples{
-\dontrun{
+\donttest{
 set.seed(1)
 Y <- iris[, -5]
 mfa_model <- mfa(Y, g = 3, q = 3)

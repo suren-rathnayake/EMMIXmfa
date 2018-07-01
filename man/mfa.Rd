@@ -209,7 +209,7 @@ Suren Rathnayake, Geoffrey McLachlan
 \code{\link{mcfa}}
 }
 \examples{
-\dontrun{
+\donttest{
   model <- mfa(iris[, -5], g=3, q=2, itmax=200, nkmeans=1, nrandom=5)
   plot(model)
   summary(model)

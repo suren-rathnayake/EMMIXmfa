@@ -1,7 +1,7 @@
 Package: EMMIXmfa
 Type: Package
 Title: Mixture models with component-wise factor analyzers
-Version: 1.4.75
+Version: 1.4.76
 Date: 2018-4-30
 Author: Suren Rathnayake, Geoff McLachlan, Jungsun Baek
 Maintainer: Suren Rathnayake <surenr@gmail.com>

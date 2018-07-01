@@ -41,7 +41,7 @@ function should be in the order as those used in
 obtaining the fitted model \code{object}.
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(42)
 test <- sample(1 : nrow(iris), 100)
 model <- mfa(iris[test, -5], g=3, q=3, itmax=500, nkmeans=3, nrandom=5)

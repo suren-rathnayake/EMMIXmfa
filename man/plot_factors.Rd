@@ -61,7 +61,7 @@ McLachlan GJ, and Peel D (2000).
 Geoffrey McLachlan, Suren Rathnayake, Jungsun Baek
 }
 \examples{
-\dontrun{
+\donttest{
 # Visualizing data used in model estimation
 set.seed(1)
 inds <- dim(iris)[1]

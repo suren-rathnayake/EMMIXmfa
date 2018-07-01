@@ -34,7 +34,7 @@ is large.
 \code{\link{ari}}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1984)
 Y <- scale(iris[, -5])
 model <- mcfa(Y, g = 3, q = 3, nkmeans = 1, nrandom = 0)

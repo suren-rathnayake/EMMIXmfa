@@ -34,7 +34,7 @@ Hubert L, and Arabie P (1985). Comparing Partitions.
 \code{\link{minmis}}
 }
 \examples{
-\dontrun{
+\donttest{
 set.seed(1984)
 Y <- scale(iris[, -5])
 model <- mcfa(Y, g = 3, q = 3, nkmeans = 1, nrandom = 0)
