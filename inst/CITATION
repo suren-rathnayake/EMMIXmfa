@@ -3,9 +3,10 @@ note <- sprintf("R package version %s", meta$Version)
 
 bibentry(bibtype = "Manual",
          title = "{EMMIXmfa}: Mixture Models with Component-Wise Factor Analyzers",
-         author = c(person("Rathnayake", "Suren"),
-                    person("Baek", "Jangsun"),
-                    person("McLachlan", "Geoffrey")),
+         author = c(person("Suren", "Rathnayake"),
+                    person("Jangsun", "Baek"),
+                    person("Geoffrey", "McLachlan"),
+                    person("R Core Team")),
          year = year,
          note = note,
          url = "https://CRAN.R-project.org/package=EMMIXmfa")
