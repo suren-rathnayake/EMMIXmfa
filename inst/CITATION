@@ -5,7 +5,7 @@ bibentry(bibtype = "Manual",
          title = "{EMMIXmfa}: Mixture Models with Component-Wise Factor Analyzers",
          author = c(person("Rathnayake", "Suren"),
                     person("Baek", "Jangsun"),
-                    person("McLachlan", "Geoffrey"))
+                    person("McLachlan", "Geoffrey")),
          year = year,
          note = note,
          url = "https://CRAN.R-project.org/package=EMMIXmfa")
