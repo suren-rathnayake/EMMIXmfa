@@ -1,5 +1,5 @@
 init_est_para.mfa <- function(Y, g, q, start, sigma_type = "common",
-              D_type = 'common', ...) {
+              D_type = "common", ...) {
 
 p <- ncol(Y)
 n <- nrow(Y)
@@ -28,11 +28,11 @@ for(i in 1 : g) {
     Di.sqrt <- diag(sqrt(diag(D[,, i])))
     inv.Di.sqrt <- diag(1 / diag(Di.sqrt))
   }
-  
+
   eig.list <- try(eigen(inv.Di.sqrt %*% Si %*% inv.Di.sqrt), TRUE)
   if (class(eig.list) == "try-error")
     break
-  
+
   H <- eig.list$vectors
   sort.lambda <- sort(eig.list$values, decreasing = TRUE,
                       index.return = TRUE)

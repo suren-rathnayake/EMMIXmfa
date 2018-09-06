@@ -1,10 +1,20 @@
 Package: EMMIXmfa
 Type: Package
-Title: Mixture models with component-wise factor analyzers
-Version: 1.4.76
-Date: 2018-4-30
-Author: Suren Rathnayake, Geoff McLachlan, Jungsun Baek
+Title: Mixture Models with Component-Wise Factor Analyzers
+Version: 2.0.3
+Date: 2018-09-04
+URL:https://github.com/suren-rathnayake/EMMIXmfa
+Author: Suren Rathnayake, Geoff McLachlan, David Peel, Jungsun Baek
 Maintainer: Suren Rathnayake <surenr@gmail.com>
-Description: We provide functions to fit finite mixtures of multivariate normal or t-distributions to data with various factor analytic structures adopted for the covariance/scale matrices. Maximum likelihood estimators of model parameters are obtained via the Expectation-Maximization algorithm.
-Suggests: mvtnorm, GGally, ggplot2, testthat
+Description: We provide functions to fit finite mixtures of multivariate normal or t-distributions to 
+    data with various factor analytic structures adopted for the covariance/scale matrices. 
+    Maximum likelihood estimators of model parameters are obtained via the 
+    Expectation-Maximization algorithm. See descriptions of the algorithms used in
+    McLachlan GJ, Peel D, Bean RW (2003) <10.1016/S0167-9473(02)00183-4> 
+    McLachlan GJ, Bean RW, Ben-Tovim Jones L (2007) <10.1016/j.csda.2006.09.015> 
+    Baek J, McLachlan GJ, Flack LK (2010) <10.1109/TPAMI.2009.149> 
+    Baek J, McLachlan GJ (2011) <10.1093/bioinformatics/btr112> 
+    McLachlan GJ, Baek J, Rathnayake SI (2011) <https://doi.org/10.1002/9781119995678.ch9>.
+Suggests: mvtnorm, GGally, ggplot2
 License: GPL (>= 2)
+
