@@ -1,4 +1,6 @@
 rm(list=ls())
+set.seed(1)
+
 require(testthat)
 require(EMMIXmfa)
 library(mvtnorm)
