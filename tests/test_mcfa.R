@@ -1,5 +1,5 @@
 rm(list=ls())
-set.seed(1)
+set.seed(11)
 
 require(testthat)
 require(EMMIXmfa)
