@@ -15,7 +15,7 @@ mixtures of common factor analyzers (MCFA) models.
 MFA and MCFA models belong to the class of finite mixture models,
 that adopt factor models for the component-covariance matrices.
 More specifically, under the factor model,
-the correlations between feature variables can be explained by the 
+the correlations between feature variables can be explained by the
 linear dependance of these variables on a smaller small number
 \emph{q} of (unobservable) latent factors.
 The component distributions can be either from the family of
@@ -32,7 +32,7 @@ enables the mixture distributions
 to be fitted  to data with dimension \emph{p}
 relatively large compared to the sample size \emph{n}.
 
-Unlike MFA, MCFA models can be used to display the 
+Unlike MFA, MCFA models can be used to display the
 observed data points in the \emph{q}-dimensional factor space.
 The MCFA would also provides a greater reduction in the number of
 parameters in the model.
@@ -64,7 +64,16 @@ Baek J, and McLachlan GJ (2011). Mixtures of common \emph{t}-factor analyzers
 for clustering highdimensional microarray data.
 \emph{Bioinformatics} \strong{27}, 1269--1276.
 
-McLachlan GJ, and Peel D (2000). Mixtures of factor analyzers. In 
+McLachlan GJ, Baek J, and Rathnayake SI (2011). Mixtures of factor analyzers
+for the analysis of high-dimensional data.
+In \emph{Mixture Estimation and Applications},
+KL Mengersen, CP Robert, and DM Titterington (Eds).
+Hoboken, New Jersey: Wiley, pp. 171--191.
+
+McLachlan GJ and Peel D (2000). 
+\emph{Finite Mixture Models}. New York: Wiley. 
+
+McLachlan GJ, and Peel D (2000). Mixtures of factor analyzers. In
 \emph{Proceedings of the Seventeenth International Conference on Machine Learning},
 P. Langley (Ed.). San Francisco: Morgan Kaufmann, pp. 599--606.
 

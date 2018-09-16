@@ -1,15 +1,21 @@
 Package: EMMIXmfa
 Type: Package
 Title: Mixture Models with Component-Wise Factor Analyzers
-Version: 2.0.3
+Version: 2.0.4
 Date: 2018-09-04
 URL:https://github.com/suren-rathnayake/EMMIXmfa
 Author: Suren Rathnayake, Geoff McLachlan, David Peel, Jungsun Baek
 Maintainer: Suren Rathnayake <surenr@gmail.com>
 Description: We provide functions to fit finite mixtures of multivariate normal or t-distributions to 
-    data with various factor analytic structures adopted for the covariance/scale matrices. 
-    Maximum likelihood estimators of model parameters are obtained via the 
+    data with various factor analytic structures adopted for the covariance/scale matrices. The 
+    factor analytic structures available include mixtures of factor analyzers and mixtures of common 
+    factor analyzers. The latter approach is so termed because the matrix of factor loadings is
+    common to components before the component-specific rotation of the component factors to 
+    make them white noise. Note that the component-factor loadings are not common after 
+    this rotation. Maximum likelihood estimators of model parameters are obtained via the 
     Expectation-Maximization algorithm. See descriptions of the algorithms used in
+    McLachlan GJ, Peel D (2000) <doi:10.1002/0471721182.ch8>
+    McLachlan GJ, Peel D (2000) <ISBN:1-55860-707-2> 
     McLachlan GJ, Peel D, Bean RW (2003) <doi:10.1016/S0167-9473(02)00183-4> 
     McLachlan GJ, Bean RW, Ben-Tovim Jones L (2007) <doi:10.1016/j.csda.2006.09.015> 
     Baek J, McLachlan GJ, Flack LK (2010) <doi:10.1109/TPAMI.2009.149> 
