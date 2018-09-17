@@ -117,7 +117,10 @@ This method is appropriate when the columns of the data
 are on the same scale. The
 \code{init_method = "eigen-A"}
 takes the first \eqn{q} eigenvectors of \eqn{Y} as the
-loading matrix \eqn{A}.
+initial value for the loading matrix \eqn{A}. 
+If \code{init_method = "gmf"} then the data is factorized using
+\code{gmf} with \eqn{q} factors and the resulting loading
+matrix is taken to be the initial value for \eqn{A}.
 
 If specified, the optional argument \code{init_para}
 must be a list or an object of class \code{mcfa} or \code{mctfa}.
