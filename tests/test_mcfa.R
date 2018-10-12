@@ -127,6 +127,7 @@ expect_that(n,   equals(dim_U[1]))
 expect_that(q,   equals(dim_U[2]))
 expect_that(g,   equals(dim_U[3]))
 expect_that(n,   equals(length(model$clust)))
+
 context("mctfa")
 
 q <- 1
