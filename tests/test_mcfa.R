@@ -1,8 +1,8 @@
 rm(list=ls())
 set.seed(11)
 
-require(testthat)
-require(EMMIXmfa)
+library(testthat)
+library(EMMIXmfa)
 library(mvtnorm)
 p1 <- 10
 p2 <- 100
