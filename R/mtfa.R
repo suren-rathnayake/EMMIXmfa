@@ -1,6 +1,4 @@
-mtfa <- function(Y, g, q, ...) UseMethod("mtfa")
-
-mtfa.default <- function(Y, g, q, itmax = 500,
+mtfa <- function (Y, g, q, itmax = 500,
                          nkmeans = 20, nrandom = 20,
                          tol = 1.e-5, df_init = rep(30, g),
                          df_update = TRUE, sigma_type = 'common',

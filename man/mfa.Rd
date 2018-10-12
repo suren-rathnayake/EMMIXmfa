@@ -21,12 +21,10 @@ the component distributions correspond to multivariate
 \emph{t} distributions.
 }
 \usage{
-mfa(Y, g, q, ...)
-mtfa(Y, g, q, ...)
-\method{mfa}{default}(Y, g, q, itmax = 500, nkmeans = 20, nrandom = 20,
+mfa(Y, g, q, itmax = 500, nkmeans = 20, nrandom = 20,
   tol = 1.e-5, sigma_type = 'common', D_type = 'common', init_clust = NULL,
   init_para = NULL, conv_measure = 'diff', warn_messages = TRUE, ...)
-\method{mtfa}{default}(Y, g, q, itmax = 500, nkmeans = 20, nrandom = 20,
+mtfa(Y, g, q, itmax = 500, nkmeans = 20, nrandom = 20,
   tol = 1.e-5, df_init = rep(30, g), df_update = TRUE,
   sigma_type = 'common', D_type = 'common', init_clust = NULL,
   init_para = NULL, conv_measure = 'diff', warn_messages = TRUE, ...)
@@ -99,9 +97,10 @@ mtfa(Y, g, q, ...)
   values specified in \code{df_init}.
 }
  \item{warn_messages}{
-  If \code{warn_messages = TRUE} (default), the output would
-  include some information on start of the EM algorithm where, if any,
-  it failed to provide a fitting.
+  With \code{warn_messages = TRUE} (default), the output would
+  include some description of the reasons where, if any, the model fitting
+  function failed to provide a fit for a given set of initial
+  parameter values.
 }
 \item{\dots}{
   Not used.
@@ -209,11 +208,11 @@ Suren Rathnayake, Geoffrey McLachlan
 \code{\link{mcfa}}
 }
 \examples{
+model <- mfa(iris[, -5], g=3, q=2, itmax=200, nkmeans=1, nrandom=5)
+summary(model)
 \donttest{
-  model <- mfa(iris[, -5], g=3, q=2, itmax=200, nkmeans=1, nrandom=5)
-  plot(model)
-  summary(model)
-}
+model <- mtfa(iris[, -5], g=3, q=2, itmax=200, nkmeans=1, nrandom=5)
+}  
 }
 \keyword{cluster}
 \keyword{multivariate}

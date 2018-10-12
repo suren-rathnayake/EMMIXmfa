@@ -1,6 +1,4 @@
-mfa <- function(Y, g, q, ...) UseMethod("mfa")
-
-mfa.default <- function(Y, g, q, itmax = 500,
+mfa <- function (Y, g, q, itmax = 500,
                         nkmeans = 20, nrandom = 20,
                         tol = 1.e-5, sigma_type = 'common',
                         D_type = 'common', init_clust = NULL,

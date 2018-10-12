@@ -7,8 +7,8 @@
  Computes Factor Scores
 }
 \description{
-This function computes factor scores given a data set and
-an \code{EMMIXmfa} model. Using factor scores,
+This function computes factor scores for observations. 
+Using factor scores,
 we can represent the original data point \eqn{y_j} in a 
 \emph{q}-dimensional reduced space. This is only meaningful
 in the case of \code{mcfa} or \code{mctfa} models,
@@ -143,8 +143,9 @@ Geoff McLachlan, Suren Rathnayake, Jungsun Baek
 # Fit a MCFA model to a subset
 set.seed(1)
 samp_size <- dim(iris)[1]
-sel_subset <- sample(1 : samp_size, 75)
-model <- mcfa(iris[sel_subset, -5], g = 3, q = 2, nkmeans = 1, nrandom = 0)
+sel_subset <- sample(1 : samp_size, 50)
+model <- mcfa(iris[sel_subset, -5], g = 3, q = 2, 
+                          nkmeans = 1, nrandom = 0, itmax = 100)
 
 # plot the data points in the factor space
 plot(model)

@@ -30,13 +30,11 @@ using the Expectation--Maximization algorithm.
 
 }
 \usage{
-mcfa(Y, g, q, ...)
-mctfa(Y, g, q, ...)
-\method{mcfa}{default}(Y, g, q, itmax = 500, nkmeans = 5, nrandom = 20,
+mcfa(Y, g, q, itmax = 500, nkmeans = 5, nrandom = 20,
   tol = 1.e-5, init_clust = NULL, init_para = NULL,
   init_method = NULL, conv_measure = 'diff',
   warn_messages = TRUE, ...)
-\method{mctfa}{default}(Y, g, q, itmax = 500, nkmeans = 5, nrandom = 20,
+mctfa(Y, g, q, itmax = 500, nkmeans = 5, nrandom = 20,
   tol = 1.e-5, df_init = rep(30, g), df_update = TRUE,
   init_clust = NULL, init_para = NULL, init_method = NULL,
   conv_measure = 'diff', warn_messages = TRUE, ...)
@@ -97,10 +95,10 @@ Maximum number of EM iterations.
   values specified in \code{df_init}.
 }
   \item{warn_messages}{
-  If \code{warn_messages = TRUE} (default), the output would
-  include error messages for instances, if any, where the
-  model fitting function failed to provide estimates of parameters.
-  Otherwise the messages will not be stored.
+  With \code{warn_messages = TRUE} (default), the output would
+  include some description of the reasons where, if any, the model fitting
+  function failed to provide a fit for a given set of initial
+  parameter values.
 }
  \item{\dots}{
 Not used.
@@ -118,9 +116,9 @@ are on the same scale. The
 \code{init_method = "eigen-A"}
 takes the first \eqn{q} eigenvectors of \eqn{Y} as the
 initial value for the loading matrix \eqn{A}. 
-If \code{init_method = "gmf"} then the data is factorized using
+If \code{init_method = "gmf"} then the data are factorized using
 \code{gmf} with \eqn{q} factors and the resulting loading
-matrix is taken to be the initial value for \eqn{A}.
+matrix is used as the initial value for \eqn{A}.
 
 If specified, the optional argument \code{init_para}
 must be a list or an object of class \code{mcfa} or \code{mctfa}.
@@ -208,14 +206,13 @@ Suren Rathnayake, Jangsun Baek, Geoff McLachlan
 \code{\link{mfa}}, \code{\link{plot_factors}}
 }
 \examples{
-\donttest{
-mcfa_fit <- mcfa(iris[, -5], g = 3, q = 3, itmax = 250,
-                nkmeans = 5, nrandom = 5, tol = 1.e-5)
+mcfa_fit <- mcfa(iris[, -5], g = 3, q = 3, itmax = 25,
+                  nkmeans = 5, nrandom = 5, tol = 1.e-5)
 
 plot(mcfa_fit)
-
-mctfa_fit <- mcfa(iris[, -5], g = 3, q = 3, itmax = 250,
-                nkmeans = 5, nrandom = 5, tol = 1.e-5, df_update = TRUE)
+\donttest{
+mctfa_fit <- mcfa(iris[, -5], g = 3, q = 3, itmax = 500,
+                  nkmeans = 5, nrandom = 5, tol = 1.e-5, df_update = TRUE)
 }
 }
 \keyword{cluster}

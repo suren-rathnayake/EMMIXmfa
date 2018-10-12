@@ -41,13 +41,13 @@ parameters in the model.
 \tabular{ll}{
 Package: \tab EMMIXmfa\cr
 Type: \tab Package\cr
-Version: \tab 2.0.0\cr
-Date: \tab 2018-05-01\cr
+Version: \tab 2.0.4\cr
+Date: \tab 2018-09-17\cr
 License: \tab GPL (>= 2)\cr
 }
 }
 \author{
-Suren Rathnayake, Jangsun Baek, Geoffrey McLachlan
+Suren Rathnayake, Geoffrey McLachlan, David Peel, Jangsun Baek
 }
 \references{
 Baek J, and McLachlan GJ (2008). Mixtures of factor analyzers with

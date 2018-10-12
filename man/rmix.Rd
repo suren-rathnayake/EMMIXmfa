@@ -1,10 +1,10 @@
 \name{rmix}
 \alias{rmix}
 \title{
- Random Deviates from EMMIXmfa Models
+ Random Deviates from EMMIX Models
 }
 \description{
-Random number generator for \code{EMMIXmfa} models.
+Random number generator for \code{emmix} models.
 }
 \usage{
 rmix(n, model, ...)
@@ -34,21 +34,10 @@ a sample from the component distribution.
 \value{
   A numeric matrix with samples drawn in rows.
 }
-% \references{
-% McLachlan GJ, and Peel D (2000).
-% \emph{Finite Mixture Models}. New York: Wiley.
-% }
-% \author{
-% Geoffrey McLachlan, Suren Rathnayake
-% }
-%%\note{
-%%}
 \examples{
-\donttest{
- set.seed(1)
- model <- mcfa(iris[, -5], g=3, q=2, nkmeans=1, nrandom=1)
- dat <- rmix(n = 10, model = model)
-}
+set.seed(1)
+model <- mcfa(iris[, -5], g=3, q=2, nkmeans=1, nrandom=1, itmax = 25)
+dat <- rmix(n = 10, model = model)
 }
 \keyword{multivariate}
 \keyword{distribution}

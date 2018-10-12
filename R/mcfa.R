@@ -1,6 +1,4 @@
-mcfa <- function (Y, g, q, ...) UseMethod("mcfa")
-
-mcfa.default <- function(Y, g, q, itmax = 500, nkmeans = 5, nrandom = 20,
+mcfa <- function (Y, g, q, itmax = 500, nkmeans = 5, nrandom = 20,
                           tol = 1.e-5,  init_clust = NULL, init_para = NULL,
                           init_method = NULL, conv_measure = 'diff',
                           warn_messages = TRUE, ...) {
